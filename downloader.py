@@ -64,66 +64,121 @@ def Twitter_Stream_handler(item):
     #     json.dump(tweets,file)
     # stream.disconnect()
 
-# def main():
-#     try:
-#         os.mkdir("TwitterData")
-#     except:
-#         pass
-#     client = MongoClient('mongodb://example:example@sbbi-panda.unl.edu:27017/')
-#     db = client.food
-#     recipes = db.recipe
-#
-#     error_recipe_IDs = []
-#     error_number = 0
-#
-#     for recipe in recipes.find():
-#         try:
-#             recipe_name = str(recipe['name'])
-#             print(recipe_name)
-#             Twitter_Stream_handler(recipe_name)
-#
-#         except:
-#             error_recipe_IDs.append(recipe['recipe_ID'])
-#             error_number += 1
-#             pass
-#         time.sleep(30)
-def Twitter_Cursor_handler():
+
+def Twitter_Cursor_handler(target, path):
     processed_tweets = []
     auth = OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
     api = tweepy.API(auth, wait_on_rate_limit=True,
                      wait_on_rate_limit_notify=True)
 
-    target = 'China Coronavirus'
     text_query = target + ' -filter:retweets'
-    tweets = tweepy.Cursor(api.search,q=text_query, lang='en', ).items(100)
-    for tweet in tweets:
-        print(tweet)
-        tweet_dict = {}
-        tweet_dict["created_at"] = str(tweet.created_at)
-        tweet_dict["id"] = tweet.id_str
-        tweet_dict["text"] = tweet.text
-        tweet_dict["geo"] = tweet.geo
-        tweet_dict["coordinates"] = str(tweet.coordinates)
-        tweet_dict["favorite_count"] = tweet.favorite_count
-        tweet_dict["entities"] = tweet.entities
+    c = tweepy.Cursor(api.search,q=text_query, lang='en').items()
+    count = 0
+    while count <= 2000:
+        try:
+            tweet = c.next()
+            tweet_dict = {}
+            tweet_dict["created_at"] = str(tweet.created_at)
+            tweet_dict["id"] = tweet.id_str
+            tweet_dict["text"] = tweet.text
+            tweet_dict["geo"] = tweet.geo
+            tweet_dict["coordinates"] = str(tweet.coordinates)
+            tweet_dict["favorite_count"] = tweet.favorite_count
+            tweet_dict["entities"] = tweet.entities
 
-        user_info = {}
-        user_info["id_str"] = tweet.user.id_str
-        user_info["name"] = tweet.user.name
-        user_info["screen_name"] = tweet.user.screen_name
-        user_info["location"] =  tweet.user.location
-        user_info["description"] = tweet.user.description
-        user_info["followers_count"] = tweet.user.followers_count
-        user_info["friends_count"] = tweet.user.friends_count
-        tweet_dict["user"] =user_info
-        processed_tweets.append(tweet_dict)
+            user_info = {}
+            user_info["id_str"] = tweet.user.id_str
+            user_info["name"] = tweet.user.name
+            user_info["screen_name"] = tweet.user.screen_name
+            user_info["location"] = tweet.user.location
+            user_info["description"] = tweet.user.description
+            user_info["followers_count"] = tweet.user.followers_count
+            user_info["friends_count"] = tweet.user.friends_count
+            tweet_dict["user"] = user_info
+            processed_tweets.append(tweet_dict)
+            count += 1
+            print(tweet_dict)
+            time.sleep(10)
+        except tweepy.TweepError:
+            time.sleep(60 * 15)
+            continue
+        except StopIteration:
+            break
 
-    with open("TwitterData/" + target + ".json", 'w') as file:
+    # for tweet in tweets:
+    #     print(tweet)
+    #     tweet_dict = {}
+    #     tweet_dict["created_at"] = str(tweet.created_at)
+    #     tweet_dict["id"] = tweet.id_str
+    #     tweet_dict["text"] = tweet.text
+    #     tweet_dict["geo"] = tweet.geo
+    #     tweet_dict["coordinates"] = str(tweet.coordinates)
+    #     tweet_dict["favorite_count"] = tweet.favorite_count
+    #     tweet_dict["entities"] = tweet.entities
+    #
+    #     user_info = {}
+    #     user_info["id_str"] = tweet.user.id_str
+    #     user_info["name"] = tweet.user.name
+    #     user_info["screen_name"] = tweet.user.screen_name
+    #     user_info["location"] =  tweet.user.location
+    #     user_info["description"] = tweet.user.description
+    #     user_info["followers_count"] = tweet.user.followers_count
+    #     user_info["friends_count"] = tweet.user.friends_count
+    #     tweet_dict["user"] =user_info
+    #     processed_tweets.append(tweet_dict)
+
+    with open(path + "/" + target + ".json", 'w') as file:
         json.dump(processed_tweets,file)
+
+def read_target_file():
+    file =  open("search_targets.txt", 'r')
+    check_categories = []
+    original_categories = []
+
+    for line in file.readlines():
+        text = line.split('\n')[0]
+        target_food = text.split()[0:1][0]
+        category = text.split()[-1]
+        pair_t = [target_food, category]
+        original_categories.append(pair_t)
+        if category not in check_categories:
+            check_categories.append(category)
+
+    file.close()
+    print(len(check_categories))
+    print(len(original_categories))
+    cate = {}
+
+    for category in check_categories:
+        cate[category] = []
+        for pair in original_categories:
+            if pair[1] == category:
+                cate[category].append(pair[0])
+    with open("targets.json", 'w') as file:
+        json.dump(cate,file)
+    file.close()
+
+def main():
+    try:
+        os.mkdir("TwitterData")
+    except:
+        pass
+    with open("checked_targets.json", "r") as file:
+        list = json.load(file)
+    for category in list:
+        try:
+            path = "TwitterData/" + category
+            os.mkdir(path)
+        except:
+            pass
+        for target in list[category]:
+            print(target)
+            Twitter_Cursor_handler(target, path)
 
 if __name__ == '__main__':
     #main()
     # Twitter_Stream_handler('hot dog')
     # print(amount)
-    Twitter_Cursor_handler()
+    #Twitter_Cursor_handler()
+    main()
