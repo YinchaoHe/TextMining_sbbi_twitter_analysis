@@ -14,55 +14,6 @@ access_token_secret = '3CcYPI5sCOzYrgmFTk34bf9FrJAOL9TBGzIfFKv5IcNDg' #"ENTER AC
 consumer_key = '9a8ukdEtOwFPi2Q102wXHY6fl' #"ENTER CONSUMER KEY"
 consumer_secret = 'Z1f78bOrK264BLVJKlGLeb85KACGrbwmNOnyew82GWUdnrEl2D' #"ENTER CONSUMER SECRET"
 
-#evantual tweets array
-tweets = []
-amount = 0
-
-# Create the class that will handle the tweet stream
-class StdOutListener(StreamListener):
-
-
-    def on_data(self, data):
-        global tweets
-        global amount
-        tweet = {}
-        data_json = json.loads(data)
-        if not data_json['retweeted'] and 'RT @' not in data_json['text']:
-            tweet["created_at"] = data_json["created_at"]
-            tweet["id"] = data_json["id"]
-            tweet["text"] = data_json["text"]
-            tweet["user"] = data_json["user"]
-            tweet["geo"] = data_json["geo"]
-            tweet["coordinates"] = data_json["coordinates"]
-            tweet["place"] = data_json["place"]
-            tweet["favorite_count"] = data_json["favorite_count"]
-            tweet["entities"] = data_json["entities"]
-            with open("TwitterData/result.json", 'a') as file:
-                file.write(str(tweet) + '\n')
-            file.close()
-            tweets.append(tweet)
-            print(tweet["created_at"])
-            amount += 1
-            # time.sleep(10)
-            return True
-
-
-    def on_error(self, status):
-        print(status)
-
-def Twitter_Stream_handler(item):
-    # Handles Twitter authetification and the connection to Twitter Streaming API
-    l = StdOutListener()
-    auth = OAuthHandler(consumer_key, consumer_secret)
-    auth.set_access_token(access_token, access_token_secret)
-    stream = Stream(auth, l)
-    while True:
-        stream.filter(track=[item], languages=['en'], is_async=True)
-        time.sleep(20)
-        stream.disconnect()
-    # with open("TwitterData/" + item + ".json", 'a') as file:
-    #     json.dump(tweets,file)
-    # stream.disconnect()
 
 
 def Twitter_Cursor_handler(target, path):
@@ -74,6 +25,8 @@ def Twitter_Cursor_handler(target, path):
 
     text_query = target + ' -filter:retweets'
     c = tweepy.Cursor(api.search,q=text_query, lang='en').items()
+
+    target = target.replace(" ", "_")
     count = 0
     while count <= 2000:
         try:
@@ -99,9 +52,13 @@ def Twitter_Cursor_handler(target, path):
             processed_tweets.append(tweet_dict)
             count += 1
             print(tweet_dict)
-            time.sleep(10)
+            with open(path + "/" + target + ".json", 'a') as file:
+                json.dump(tweet_dict, file)
+                file.write(",\n")
+            file.close()
+            time.sleep(5)
         except tweepy.TweepError:
-            time.sleep(60 * 15)
+            time.sleep(60 * 2)
             continue
         except StopIteration:
             break
@@ -128,47 +85,46 @@ def Twitter_Cursor_handler(target, path):
     #     tweet_dict["user"] =user_info
     #     processed_tweets.append(tweet_dict)
 
-    with open(path + "/" + target + ".json", 'w') as file:
-        json.dump(processed_tweets,file)
 
-def read_target_file():
-    file =  open("search_targets.txt", 'r')
-    check_categories = []
-    original_categories = []
 
-    for line in file.readlines():
-        text = line.split('\n')[0]
-        target_food = text.split()[0:1][0]
-        category = text.split()[-1]
-        pair_t = [target_food, category]
-        original_categories.append(pair_t)
-        if category not in check_categories:
-            check_categories.append(category)
-
-    file.close()
-    print(len(check_categories))
-    print(len(original_categories))
-    cate = {}
-
-    for category in check_categories:
-        cate[category] = []
-        for pair in original_categories:
-            if pair[1] == category:
-                cate[category].append(pair[0])
-    with open("targets.json", 'w') as file:
-        json.dump(cate,file)
-    file.close()
+# def read_target_file():
+#     file =  open("search_targets.txt", 'r')
+#     check_categories = []
+#     original_categories = []
+#
+#     for line in file.readlines():
+#         text = line.split('\n')[0]
+#         target_food = text.split()[0:1][0]
+#         category = text.split()[-1]
+#         pair_t = [target_food, category]
+#         original_categories.append(pair_t)
+#         if category not in check_categories:
+#             check_categories.append(category)
+#
+#     file.close()
+#     print(len(check_categories))
+#     print(len(original_categories))
+#     cate = {}
+#
+#     for category in check_categories:
+#         cate[category] = []
+#         for pair in original_categories:
+#             if pair[1] == category:
+#                 cate[category].append(pair[0])
+#     with open("targets.json", 'w') as file:
+#         json.dump(cate,file)
+#     file.close()
 
 def main():
     try:
-        os.mkdir("TwitterData")
+        os.mkdir("TwitterData_Cursor")
     except:
         pass
     with open("checked_targets.json", "r") as file:
         list = json.load(file)
     for category in list:
         try:
-            path = "TwitterData/" + category
+            path = "TwitterData_Cursor/" + category
             os.mkdir(path)
         except:
             pass
@@ -180,5 +136,7 @@ if __name__ == '__main__':
     #main()
     # Twitter_Stream_handler('hot dog')
     # print(amount)
-    #Twitter_Cursor_handler()
-    main()
+    with open('TwitterData_Cursor/Fast_Foods/pizza.json', 'r') as f:
+        data = json.load(f)
+    for food in data:
+        print(food)

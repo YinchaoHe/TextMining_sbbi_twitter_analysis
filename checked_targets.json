@@ -1,5 +1,5 @@
 {
-  "Fast Foods": [
+  "Fast_Foods": [
     "pizza",
     "fast food",
     "hot dog",
@@ -31,7 +31,7 @@
     "orange drink",
     "slimfast"
   ],
-  "Alcoholic Beverages": [
+  "Alcoholic_Beverages": [
     "wine",
     "beer",
     "ginger ale",
@@ -155,7 +155,7 @@
     "jujube",
     "cocoa mix"
   ],
-  "Cereal Grains and Pasta": [
+  "Cereal_Grains_and_Pasta": [
     "corn",
     "rice",
     "oat",
@@ -297,7 +297,7 @@
     "snack",
     "pretzels"
   ],
-  "Breakfast Cereals": [
+  "Breakfast_Cereals": [
     "cereal",
     "oats",
     "granola",
@@ -393,7 +393,7 @@
     "chestnuts",
     "mixed nuts"
   ],
-  "Spices and Herbs": [
+  "Spices_and_Herbs": [
     "vanilla",
     "ginger",
     "cinnamon",
@@ -428,7 +428,7 @@
     "cardamom",
     "onion powder"
   ],
-  "Baked Products": [
+  "Baked_Products": [
     "crackers"
   ],
   "Sauces": [
@@ -463,7 +463,7 @@
   "Eggs": [
     "yolk"
   ],
-  "Fats and Oils": [
+  "Fats_and_Oils": [
     "cocoa butter",
     "sunflower",
     "mayonnaise",
