@@ -133,10 +133,5 @@ def main():
             Twitter_Cursor_handler(target, path)
 
 if __name__ == '__main__':
-    #main()
-    # Twitter_Stream_handler('hot dog')
-    # print(amount)
-    with open('TwitterData_Cursor/Fast_Foods/pizza.json', 'r') as f:
-        data = json.load(f)
-    for food in data:
-        print(food)
+    main()
+
