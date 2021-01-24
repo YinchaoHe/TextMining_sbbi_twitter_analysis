@@ -122,6 +122,7 @@ def main():
         pass
     with open("checked_targets.json", "r") as file:
         list = json.load(file)
+    file.close()
     for category in list:
         try:
             path = "TwitterData_Cursor/" + category

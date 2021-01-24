@@ -7,15 +7,15 @@ from tweepy import Stream
 import tweepy
 
 # Enter Twitter API Keys
-access_token = '1128838733451735042-PWb9rEVvAgBIwhRcjtbaU5FjaGXhS9'#"ENTER ACCESS TOKEN"
-access_token_secret = '3CcYPI5sCOzYrgmFTk34bf9FrJAOL9TBGzIfFKv5IcNDg' #"ENTER ACCESS TOKEN SECRET"
-consumer_key = '9a8ukdEtOwFPi2Q102wXHY6fl' #"ENTER CONSUMER KEY"
-consumer_secret = 'Z1f78bOrK264BLVJKlGLeb85KACGrbwmNOnyew82GWUdnrEl2D' #"ENTER CONSUMER SECRET"
+access_token = '1352703664713052161-Zd0hO2IBh45G081ZAuPDKkxkcf3AOn'#"ENTER ACCESS TOKEN"
+access_token_secret = 'OkZ4wMSZ61ieue46Lat5Ve5Ha6skaAqFyj8K9rBFprUJy' #"ENTER ACCESS TOKEN SECRET"
+consumer_key = 'S8VooVgIjBeX065l7aM9nrXFh' #"ENTER CONSUMER KEY"
+consumer_secret = 'NA2gYfho2CgyF82yGlxifMDarMaAMVwmjxyGrbRBql9kaEBH0X' #"ENTER CONSUMER SECRET"
 
 #evantual tweets array
 tweets = []
 amount = 0
-
+food4search = 'Beverages'
 # Create the class that will handle the tweet stream
 class StdOutListener(StreamListener):
 
@@ -35,7 +35,7 @@ class StdOutListener(StreamListener):
             tweet["place"] = data_json["place"]
             tweet["favorite_count"] = data_json["favorite_count"]
             tweet["entities"] = data_json["entities"]
-            with open("TwitterData_Stream/result.json", 'a') as file:
+            with open("TwitterData_Stream/" + food4search + "/result.json", 'a') as file:
                 json.dump(tweet, file)
                 file.write(",\n")
             file.close()
@@ -57,9 +57,9 @@ def Twitter_Stream_handler(tracklist):
     stream = Stream(auth, l)
     while True:
         stream.filter(track=tracklist, languages=['en'], is_async=True)
-        time.sleep(60)
+        time.sleep(60 * 2)
         stream.disconnect()
-
+        time.sleep(5)
 
 
 def main():
@@ -73,14 +73,15 @@ def main():
 
     for category in list:
         tracklist = []
-        try:
-            path = "TwitterData/" + category
-            os.mkdir(path)
-        except:
-            pass
-        for target in list[category]:
-            tracklist.append(target)
-            Twitter_Stream_handler(tracklist)
+        if category == food4search:
+            try:
+                path = "TwitterData_Stream/" + food4search
+                os.mkdir(path)
+            except:
+                pass
+            for target in list[category]:
+                tracklist.append(target)
+                Twitter_Stream_handler(tracklist)
 
 if __name__ == '__main__':
     main()
