@@ -66,10 +66,10 @@ def Twitter_Stream_handler(tracklist, category, name):
         print("Starting " + name)
         print("category: " + food4search)
         stream.filter(track=tracklist, languages=['en'], is_async=True)
-        time.sleep(60 * 2)
+        time.sleep(60)
         threadLock.release()
         stream.disconnect()
-        time.sleep(15)
+        time.sleep(5)
 
 
 class myThread (threading.Thread):
