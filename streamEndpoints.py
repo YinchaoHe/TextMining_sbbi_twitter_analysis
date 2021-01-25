@@ -1,3 +1,4 @@
+import threading
 import json
 import os
 import time
@@ -15,7 +16,7 @@ consumer_secret = 'NA2gYfho2CgyF82yGlxifMDarMaAMVwmjxyGrbRBql9kaEBH0X' #"ENTER C
 #evantual tweets array
 tweets = []
 amount = 0
-food4search = 'Beverages'
+
 # Create the class that will handle the tweet stream
 class StdOutListener(StreamListener):
 
@@ -40,6 +41,7 @@ class StdOutListener(StreamListener):
                 file.write(",\n")
             file.close()
             tweets.append(tweet)
+            print(food4search)
             print(tweet["created_at"])
             amount += 1
             time.sleep(3)
@@ -49,20 +51,39 @@ class StdOutListener(StreamListener):
     def on_error(self, status):
         print(status)
 
-def Twitter_Stream_handler(tracklist):
+def Twitter_Stream_handler(tracklist, category, name):
     # Handles Twitter authetification and the connection to Twitter Streaming API
     l = StdOutListener()
     auth = OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
     stream = Stream(auth, l)
+    threadLock = threading.Lock()
+
     while True:
+        threadLock.acquire()
+        global food4search
+        food4search = category
+        print("Starting " + name)
+        print("category: " + food4search)
         stream.filter(track=tracklist, languages=['en'], is_async=True)
         time.sleep(60 * 2)
+        threadLock.release()
         stream.disconnect()
-        time.sleep(5)
+        time.sleep(15)
 
+
+class myThread (threading.Thread):
+   def __init__(self, threadID, name, category, tracklist):
+      threading.Thread.__init__(self)
+      self.threadID = threadID
+      self.name = name
+      self.category = category
+      self.list = tracklist
+   def run(self):
+      Twitter_Stream_handler(self.list, self.category, self.name)
 
 def main():
+
     try:
         os.mkdir("TwitterData_Stream")
     except:
@@ -70,18 +91,34 @@ def main():
     with open("checked_targets.json", "r") as file:
         list = json.load(file)
 
+    category1 = 'Fast_Foods'
+    category2 = 'Beverages'
+    categorys = [category1, category2]
+    for category in categorys:
+        try:
+            path = "TwitterData_Stream/" + category
+            os.mkdir(path)
+        except:
+            pass
 
-    for category in list:
-        tracklist = []
-        if category == food4search:
-            try:
-                path = "TwitterData_Stream/" + food4search
-                os.mkdir(path)
-            except:
-                pass
-            for target in list[category]:
-                tracklist.append(target)
-                Twitter_Stream_handler(tracklist)
+    tracklist1 = []
+    for target in list[category1]:
+        tracklist1.append(target)
+
+    tracklist2 = []
+    for target in list[category2]:
+        tracklist2.append(target)
+
+    thread1 = myThread(1, 'Thread-1', category1, tracklist1)
+    thread2 = myThread(2, 'Thread-2', category2, tracklist2)
+
+    thread1.start()
+    thread2.start()
+
 
 if __name__ == '__main__':
     main()
+    # with open('TwitterData_Stream/Beverages/result.json', 'r') as f:
+    #     data = json.load(f)
+    # for food in data:
+    #     print(food)

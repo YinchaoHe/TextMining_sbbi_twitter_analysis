@@ -135,4 +135,7 @@ def main():
 
 if __name__ == '__main__':
     main()
+    # with open('TwitterData_Cursor/Fast_Foods/hot_dog.json', 'r') as f:
+    #     data = json.load(f)
+    # print(len(data))
 
