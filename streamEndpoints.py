@@ -16,7 +16,7 @@ consumer_secret = 'NA2gYfho2CgyF82yGlxifMDarMaAMVwmjxyGrbRBql9kaEBH0X' #"ENTER C
 #evantual tweets array
 tweets = []
 amount = 0
-
+exitFlag = 1
 # Create the class that will handle the tweet stream
 class StdOutListener(StreamListener):
 
@@ -51,25 +51,50 @@ class StdOutListener(StreamListener):
     def on_error(self, status):
         print(status)
 
-def Twitter_Stream_handler(tracklist, category, name):
+def Twitter_Stream_handler_1(tracklist, category, name):
     # Handles Twitter authetification and the connection to Twitter Streaming API
     l = StdOutListener()
     auth = OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
     stream = Stream(auth, l)
     threadLock = threading.Lock()
-
+    global exitFlag
     while True:
-        threadLock.acquire()
-        global food4search
-        food4search = category
-        print("Starting " + name)
-        print("category: " + food4search)
-        stream.filter(track=tracklist, languages=['en'], is_async=True)
-        time.sleep(60)
-        threadLock.release()
-        stream.disconnect()
-        time.sleep(5)
+        if exitFlag == 1:
+            threadLock.acquire()
+            global food4search
+            food4search = category
+            print("Starting " + name)
+            print("category: " + food4search)
+            stream.filter(track=tracklist, languages=['en'], is_async=True)
+            time.sleep(60)
+            stream.disconnect()
+            exitFlag = 2
+            time.sleep(5)
+            threadLock.release()
+
+
+def Twitter_Stream_handler_2(tracklist, category, name):
+    # Handles Twitter authetification and the connection to Twitter Streaming API
+    l = StdOutListener()
+    auth = OAuthHandler(consumer_key, consumer_secret)
+    auth.set_access_token(access_token, access_token_secret)
+    stream = Stream(auth, l)
+    threadLock = threading.Lock()
+    global exitFlag
+    while True:
+        if exitFlag == 2:
+            threadLock.acquire()
+            global food4search
+            food4search = category
+            print("Starting " + name)
+            print("category: " + food4search)
+            stream.filter(track=tracklist, languages=['en'], is_async=True)
+            time.sleep(60)
+            exitFlag = 1
+            stream.disconnect()
+            time.sleep(5)
+            threadLock.release()
 
 
 class myThread (threading.Thread):
@@ -80,7 +105,10 @@ class myThread (threading.Thread):
       self.category = category
       self.list = tracklist
    def run(self):
-      Twitter_Stream_handler(self.list, self.category, self.name)
+      if self.threadID == 1:
+          Twitter_Stream_handler_1(self.list, self.category, self.name)
+      else:
+          Twitter_Stream_handler_2(self.list, self.category, self.name)
 
 def main():
 
@@ -118,7 +146,6 @@ def main():
 
 if __name__ == '__main__':
     main()
-    # with open('TwitterData_Stream/Beverages/result.json', 'r') as f:
+    # with open('TwitterData_Stream/Beverages.json', 'r') as f:
     #     data = json.load(f)
-    # for food in data:
-    #     print(food)
+    # print(len(data))
