@@ -1,0 +1,1622 @@
+[
+  {
+    "name": "'00' Pizza Flour",
+    "Volume": "1 cup",
+    "Ounces": "4",
+    "Gras": "116"
+  },
+  {
+    "name": "All-Purpose Flour",
+    "Volume": "1 cup",
+    "Ounces": "4 1/4",
+    "Gras": "120"
+  },
+  {
+    "name": "Almond Flour",
+    "Volume": "1 cup",
+    "Ounces": "3 3/8",
+    "Gras": "96"
+  },
+  {
+    "name": "Almond meal",
+    "Volume": "1 cup",
+    "Ounces": "3",
+    "Gras": "84"
+  },
+  {
+    "name": "Almond paste (packed)",
+    "Volume": "1 cup",
+    "Ounces": "9 1/8",
+    "Gras": "259"
+  },
+  {
+    "name": "Almonds (sliced)",
+    "Volume": "1/2 cup",
+    "Ounces": "1 1/2",
+    "Gras": "43"
+  },
+  {
+    "name": "Almonds (slivered)",
+    "Volume": "1/2 cup",
+    "Ounces": "2",
+    "Gras": "57"
+  },
+  {
+    "name": "Almonds, whole (unblanched)",
+    "Volume": "1 cup",
+    "Ounces": "5",
+    "Gras": "142"
+  },
+  {
+    "name": "Amaranth flour",
+    "Volume": "1 cup",
+    "Ounces": "3 5/8",
+    "Gras": "103"
+  },
+  {
+    "name": "Apples (dried, diced)",
+    "Volume": "1 cup",
+    "Ounces": "3",
+    "Gras": "85"
+  },
+  {
+    "name": "Apples (peeled, sliced)",
+    "Volume": "1 cup",
+    "Ounces": "4",
+    "Gras": "113"
+  },
+  {
+    "name": "Applesauce",
+    "Volume": "1 cup",
+    "Ounces": "9",
+    "Gras": "255"
+  },
+  {
+    "name": "Apricots (dried, diced)",
+    "Volume": "1/2 cup",
+    "Ounces": "2 1/4",
+    "Gras": "64"
+  },
+  {
+    "name": "Artisan Bread Flour",
+    "Volume": "1 cup",
+    "Ounces": "4 1/4",
+    "Gras": "120"
+  },
+  {
+    "name": "Artisan Bread Topping",
+    "Volume": "1/4 cup",
+    "Ounces": "1 1/2",
+    "Gras": "43"
+  },
+  {
+    "name": "Baker's Cinnamon Filling",
+    "Volume": "1 cup",
+    "Ounces": "5 3/8",
+    "Gras": "152"
+  },
+  {
+    "name": "Baker's Fruit Blend",
+    "Volume": "1 cup",
+    "Ounces": "4 1/2",
+    "Gras": "128"
+  },
+  {
+    "name": "Baker's Special Sugar (superfine sugar, castor sugar)",
+    "Volume": "1 cup",
+    "Ounces": "6 3/4",
+    "Gras": "190"
+  },
+  {
+    "name": "Baking powder",
+    "Volume": "1/5 cup",
+    "Ounces": "\u00a0",
+    "Gras": "4"
+  },
+  {
+    "name": "Baking soda",
+    "Volume": "1/10 cup",
+    "Ounces": "\u00a0",
+    "Gras": "3"
+  },
+  {
+    "name": "Baking Sugar Alternative",
+    "Volume": "1 cup",
+    "Ounces": "6",
+    "Gras": "170"
+  },
+  {
+    "name": "Bananas (mashed)",
+    "Volume": "1 cup",
+    "Ounces": "8",
+    "Gras": "227"
+  },
+  {
+    "name": "Barley (cooked)",
+    "Volume": "1 cup",
+    "Ounces": "7 5/8",
+    "Gras": "215"
+  },
+  {
+    "name": "Barley (pearled)",
+    "Volume": "1 cup",
+    "Ounces": "7 1/2",
+    "Gras": "213"
+  },
+  {
+    "name": "Barley flakes",
+    "Volume": "1/2 cup",
+    "Ounces": "1 5/8",
+    "Gras": "46"
+  },
+  {
+    "name": "Barley flour",
+    "Volume": "1 cup",
+    "Ounces": "3",
+    "Gras": "85"
+  },
+  {
+    "name": "Basil pesto",
+    "Volume": "2/5 cup",
+    "Ounces": "1",
+    "Gras": "28"
+  },
+  {
+    "name": "Bell peppers (fresh)",
+    "Volume": "1 cup",
+    "Ounces": "5",
+    "Gras": "142"
+  },
+  {
+    "name": "Berries (frozen)",
+    "Volume": "1 cup",
+    "Ounces": "5",
+    "Gras": "142"
+  },
+  {
+    "name": "Blueberries (dried)",
+    "Volume": "1 cup",
+    "Ounces": "5 1/2",
+    "Gras": "156"
+  },
+  {
+    "name": "Blueberries (fresh)",
+    "Volume": "1 cup",
+    "Ounces": "6",
+    "Gras": "170"
+  },
+  {
+    "name": "Blueberry juice",
+    "Volume": "1 cup",
+    "Ounces": "8 1/2",
+    "Gras": "241"
+  },
+  {
+    "name": "Boiled cider",
+    "Volume": "1/4 cup",
+    "Ounces": "3",
+    "Gras": "85"
+  },
+  {
+    "name": "Bran cereal",
+    "Volume": "1 cup",
+    "Ounces": "2 1/8",
+    "Gras": "60"
+  },
+  {
+    "name": "Bread crumbs (dried)",
+    "Volume": "1/4 cup",
+    "Ounces": "1",
+    "Gras": "28"
+  },
+  {
+    "name": "Bread crumbs (fresh)",
+    "Volume": "1/4 cup",
+    "Ounces": "3/4",
+    "Gras": "21"
+  },
+  {
+    "name": "Bread crumbs (Japanese Panko)",
+    "Volume": "1 cup",
+    "Ounces": "1 3/4",
+    "Gras": "50"
+  },
+  {
+    "name": "Bread Flour",
+    "Volume": "1 cup",
+    "Ounces": "4 1/4",
+    "Gras": "120"
+  },
+  {
+    "name": "Brown rice (cooked)",
+    "Volume": "1 cup",
+    "Ounces": "6",
+    "Gras": "170"
+  },
+  {
+    "name": "Brown rice flour",
+    "Volume": "1 cup",
+    "Ounces": "4 1/2",
+    "Gras": "128"
+  },
+  {
+    "name": "Brown sugar (dark or light, packed)",
+    "Volume": "1 cup",
+    "Ounces": "7 1/2",
+    "Gras": "213"
+  },
+  {
+    "name": "Buckwheat (whole)",
+    "Volume": "1 cup",
+    "Ounces": "6",
+    "Gras": "170"
+  },
+  {
+    "name": "Buckwheat Flour",
+    "Volume": "1 cup",
+    "Ounces": "4 1/4",
+    "Gras": "120"
+  },
+  {
+    "name": "Bulgur",
+    "Volume": "1 cup",
+    "Ounces": "5 3/8",
+    "Gras": "152"
+  },
+  {
+    "name": "Butter",
+    "Volume": "1/2 cup",
+    "Ounces": "4",
+    "Gras": "113"
+  },
+  {
+    "name": "Buttermilk",
+    "Volume": "1 cup",
+    "Ounces": "8",
+    "Gras": "227"
+  },
+  {
+    "name": "Buttermilk powder",
+    "Volume": "2/5 cup",
+    "Ounces": "2/3",
+    "Gras": "18"
+  },
+  {
+    "name": "Cacao nibs",
+    "Volume": "1 cup",
+    "Ounces": "4 1/4",
+    "Gras": "120"
+  },
+  {
+    "name": "Cake Enhancer",
+    "Volume": "2/5 cup",
+    "Ounces": "1/2",
+    "Gras": "14"
+  },
+  {
+    "name": "Candied peel",
+    "Volume": "1/2 cup",
+    "Ounces": "3",
+    "Gras": "85"
+  },
+  {
+    "name": "Caramel (14-16 individual pieces, 1\" squares)",
+    "Volume": "1/2 cup",
+    "Ounces": "5",
+    "Gras": "142"
+  },
+  {
+    "name": "Caramel bits (chopped Heath or toffee)",
+    "Volume": "1 cup",
+    "Ounces": "5 1/2",
+    "Gras": "156"
+  },
+  {
+    "name": "Caraway seeds",
+    "Volume": "2/5 cup",
+    "Ounces": "5/8",
+    "Gras": "18"
+  },
+  {
+    "name": "Carrots (cooked and pur\u00e9ed)",
+    "Volume": "1/2 cup",
+    "Ounces": "4 1/2",
+    "Gras": "128"
+  },
+  {
+    "name": "Carrots (diced)",
+    "Volume": "1 cup",
+    "Ounces": "5",
+    "Gras": "142"
+  },
+  {
+    "name": "Carrots (grated)",
+    "Volume": "1 cup",
+    "Ounces": "3 1/2",
+    "Gras": "99"
+  },
+  {
+    "name": "Cashews (chopped)",
+    "Volume": "1 cup",
+    "Ounces": "4",
+    "Gras": "113"
+  },
+  {
+    "name": "Cashews (whole)",
+    "Volume": "1 cup",
+    "Ounces": "4",
+    "Gras": "113"
+  },
+  {
+    "name": "Celery (diced)",
+    "Volume": "1 cup",
+    "Ounces": "5",
+    "Gras": "142"
+  },
+  {
+    "name": "Cheese (Feta)",
+    "Volume": "1/2 cup",
+    "Ounces": "2",
+    "Gras": "57"
+  },
+  {
+    "name": "Cheese (grated cheddar, jack, mozzarella, or Swiss)",
+    "Volume": "1 cup",
+    "Ounces": "4",
+    "Gras": "113"
+  },
+  {
+    "name": "Cheese (grated Parmesan)",
+    "Volume": "1/2 cup",
+    "Ounces": "1 3/4",
+    "Gras": "50"
+  },
+  {
+    "name": "Cheese (Ricotta)",
+    "Volume": "1 cup",
+    "Ounces": "8",
+    "Gras": "227"
+  },
+  {
+    "name": "Cherries (candied)",
+    "Volume": "1/4 cup",
+    "Ounces": "1 3/4",
+    "Gras": "50"
+  },
+  {
+    "name": "Cherries (dried)",
+    "Volume": "1/2 cup",
+    "Ounces": "2 1/2",
+    "Gras": "71"
+  },
+  {
+    "name": "Cherries (fresh, pitted, chopped)",
+    "Volume": "1/2 cup",
+    "Ounces": "2 7/8",
+    "Gras": "80"
+  },
+  {
+    "name": "Cherries (frozen)",
+    "Volume": "1 cup",
+    "Ounces": "4",
+    "Gras": "113"
+  },
+  {
+    "name": "Chickpea flour",
+    "Volume": "1 cup",
+    "Ounces": "3",
+    "Gras": "85"
+  },
+  {
+    "name": "Chives (fresh)",
+    "Volume": "1/2 cup",
+    "Ounces": "3/4",
+    "Gras": "21"
+  },
+  {
+    "name": "Chocolate (chopped)",
+    "Volume": "1 cup",
+    "Ounces": "6",
+    "Gras": "170"
+  },
+  {
+    "name": "Chocolate Chips",
+    "Volume": "1 cup",
+    "Ounces": "6",
+    "Gras": "170"
+  },
+  {
+    "name": "Chocolate Chunks",
+    "Volume": "1 cup",
+    "Ounces": "6",
+    "Gras": "170"
+  },
+  {
+    "name": "Cinnamon Sweet Bits",
+    "Volume": "1 cup",
+    "Ounces": "5",
+    "Gras": "140"
+  },
+  {
+    "name": "Cinnamon-Sugar",
+    "Volume": "1/4 cup",
+    "Ounces": "1 3/4",
+    "Gras": "50"
+  },
+  {
+    "name": "Cocoa (unsweetened)",
+    "Volume": "1/2 cup",
+    "Ounces": "1 1/2",
+    "Gras": "42"
+  },
+  {
+    "name": "Coconut (sweetened, shredded)",
+    "Volume": "1 cup",
+    "Ounces": "3",
+    "Gras": "85"
+  },
+  {
+    "name": "Coconut (toasted)",
+    "Volume": "1 cup",
+    "Ounces": "3",
+    "Gras": "85"
+  },
+  {
+    "name": "Coconut (unsweetened, desiccated)",
+    "Volume": "1 cup",
+    "Ounces": "3",
+    "Gras": "85"
+  },
+  {
+    "name": "Coconut (unsweetened, large flakes)",
+    "Volume": "1 cup",
+    "Ounces": "2 1/8",
+    "Gras": "60"
+  },
+  {
+    "name": "Coconut (unsweetened, shredded)",
+    "Volume": "1 cup",
+    "Ounces": "1 7/8",
+    "Gras": "53"
+  },
+  {
+    "name": "Coconut Flour",
+    "Volume": "1 cup",
+    "Ounces": "4 1/2",
+    "Gras": "128"
+  },
+  {
+    "name": "Coconut Milk Powder",
+    "Volume": "1/2 cup",
+    "Ounces": "2",
+    "Gras": "57"
+  },
+  {
+    "name": "Coconut oil",
+    "Volume": "1/2 cup",
+    "Ounces": "4",
+    "Gras": "113"
+  },
+  {
+    "name": "Coconut sugar",
+    "Volume": "1/2 cup",
+    "Ounces": "2 3/4",
+    "Gras": "77"
+  },
+  {
+    "name": "Confectioners' sugar (unsifted)",
+    "Volume": "2 cups",
+    "Ounces": "8",
+    "Gras": "227"
+  },
+  {
+    "name": "Cookie crumbs",
+    "Volume": "1 cup",
+    "Ounces": "3",
+    "Gras": "85"
+  },
+  {
+    "name": "Corn (popped)",
+    "Volume": "4 cups",
+    "Ounces": "3/4",
+    "Gras": "21"
+  },
+  {
+    "name": "Corn syrup",
+    "Volume": "1 cup",
+    "Ounces": "11",
+    "Gras": "312"
+  },
+  {
+    "name": "Cornmeal (whole)",
+    "Volume": "1 cup",
+    "Ounces": "4 7/8",
+    "Gras": "138"
+  },
+  {
+    "name": "Cornmeal (yellow, Quaker)",
+    "Volume": "1 cup",
+    "Ounces": "5 1/2",
+    "Gras": "156"
+  },
+  {
+    "name": "Cornstarch",
+    "Volume": "1/4 cup",
+    "Ounces": "1",
+    "Gras": "28"
+  },
+  {
+    "name": "Cracked wheat",
+    "Volume": "1 cup",
+    "Ounces": "5 1/4",
+    "Gras": "149"
+  },
+  {
+    "name": "Cranberries (dried)",
+    "Volume": "1/2 cup",
+    "Ounces": "2",
+    "Gras": "57"
+  },
+  {
+    "name": "Cranberries (fresh or frozen)",
+    "Volume": "1 cup",
+    "Ounces": "3 1/2",
+    "Gras": "99"
+  },
+  {
+    "name": "Cream (heavy cream, light cream, or half & half)",
+    "Volume": "1 cup",
+    "Ounces": "8",
+    "Gras": "227"
+  },
+  {
+    "name": "Cream cheese",
+    "Volume": "1 cup",
+    "Ounces": "8",
+    "Gras": "227"
+  },
+  {
+    "name": "Crystallized ginger",
+    "Volume": "1/2 cup",
+    "Ounces": "3 1/4",
+    "Gras": "92"
+  },
+  {
+    "name": "Currants",
+    "Volume": "1 cup",
+    "Ounces": "5",
+    "Gras": "142"
+  },
+  {
+    "name": "Dates (chopped)",
+    "Volume": "1 cup",
+    "Ounces": "5 1/4",
+    "Gras": "149"
+  },
+  {
+    "name": "Demerara sugar",
+    "Volume": "1 cup",
+    "Ounces": "7 3/4",
+    "Gras": "220"
+  },
+  {
+    "name": "Dried Blueberry Powder",
+    "Volume": "1/4 cup",
+    "Ounces": "1",
+    "Gras": "28"
+  },
+  {
+    "name": "Dried milk (Baker's Special Dry Milk)",
+    "Volume": "1/4 cup",
+    "Ounces": "1",
+    "Gras": "28"
+  },
+  {
+    "name": "Dried nonfat milk (powdered)",
+    "Volume": "1/4 cup",
+    "Ounces": "1",
+    "Gras": "28"
+  },
+  {
+    "name": "Dried potato flakes (instant mashed potatoes)",
+    "Volume": "1/2 cup",
+    "Ounces": "1 1/2",
+    "Gras": "43"
+  },
+  {
+    "name": "Dried whole milk (powdered)",
+    "Volume": "1/2 cup",
+    "Ounces": "1 3/4",
+    "Gras": "50"
+  },
+  {
+    "name": "Durum Flour",
+    "Volume": "1 cup",
+    "Ounces": "4 3/8",
+    "Gras": "124"
+  },
+  {
+    "name": "Easy Roll Dough Improver",
+    "Volume": "2/5 cup",
+    "Ounces": "5/8",
+    "Gras": "18"
+  },
+  {
+    "name": "Egg (fresh)",
+    "Volume": "3/5 cup",
+    "Ounces": "1 3/4",
+    "Gras": "50"
+  },
+  {
+    "name": "Egg white (fresh)",
+    "Volume": "3/5 cup",
+    "Ounces": "1 1/4",
+    "Gras": "35"
+  },
+  {
+    "name": "Egg whites (dried)",
+    "Volume": "2/5 cup",
+    "Ounces": "3/8",
+    "Gras": "11"
+  },
+  {
+    "name": "Egg yolk (fresh)",
+    "Volume": "3/5 cup",
+    "Ounces": "1/2",
+    "Gras": "14"
+  },
+  {
+    "name": "Espresso Powder",
+    "Volume": "1/5 cup",
+    "Ounces": "1/4",
+    "Gras": "7"
+  },
+  {
+    "name": "Everything Bagel Topping",
+    "Volume": "1/4 cup",
+    "Ounces": "1 1/4",
+    "Gras": "35"
+  },
+  {
+    "name": "Figs (dried, chopped)",
+    "Volume": "1 cup",
+    "Ounces": "5 1/4",
+    "Gras": "149"
+  },
+  {
+    "name": "First Clear Flour",
+    "Volume": "1 cup",
+    "Ounces": "3 3/4",
+    "Gras": "106"
+  },
+  {
+    "name": "Flax meal",
+    "Volume": "1/2 cup",
+    "Ounces": "1 3/4",
+    "Gras": "50"
+  },
+  {
+    "name": "Flaxseed",
+    "Volume": "1/4 cup",
+    "Ounces": "1 1/4",
+    "Gras": "35"
+  },
+  {
+    "name": "French-Style Flour",
+    "Volume": "1 cup",
+    "Ounces": "4 1/4",
+    "Gras": "120"
+  },
+  {
+    "name": "Fruitcake Fruit Blend",
+    "Volume": "1 cup",
+    "Ounces": "4 1/4",
+    "Gras": "120"
+  },
+  {
+    "name": "Garlic (minced)",
+    "Volume": "2/5 cup",
+    "Ounces": "1",
+    "Gras": "28"
+  },
+  {
+    "name": "Garlic (peeled and sliced)",
+    "Volume": "1 cup",
+    "Ounces": "5 1/4",
+    "Gras": "149"
+  },
+  {
+    "name": "Ginger (fresh, sliced)",
+    "Volume": "1/4 cup",
+    "Ounces": "2",
+    "Gras": "57"
+  },
+  {
+    "name": "Gluten-Free All-Purpose Baking Mix",
+    "Volume": "1 cup",
+    "Ounces": "4 1/4",
+    "Gras": "120"
+  },
+  {
+    "name": "Gluten-Free All-Purpose Flour",
+    "Volume": "1 cup",
+    "Ounces": "5 1/2",
+    "Gras": "156"
+  },
+  {
+    "name": "Gluten-Free Measure for Measure Flour",
+    "Volume": "1 cup",
+    "Ounces": "4 1/4",
+    "Gras": "120"
+  },
+  {
+    "name": "Graham cracker crumbs (boxed)",
+    "Volume": "1 cup",
+    "Ounces": "3 1/2",
+    "Gras": "99"
+  },
+  {
+    "name": "Graham crackers (crushed)",
+    "Volume": "1 cup",
+    "Ounces": "5",
+    "Gras": "142"
+  },
+  {
+    "name": "Granola",
+    "Volume": "1 cup",
+    "Ounces": "4",
+    "Gras": "113"
+  },
+  {
+    "name": "Grape Nuts",
+    "Volume": "1/2 cup",
+    "Ounces": "2",
+    "Gras": "57"
+  },
+  {
+    "name": "Harvest Grains Blend",
+    "Volume": "1/2 cup",
+    "Ounces": "2 5/8",
+    "Gras": "74"
+  },
+  {
+    "name": "Hazelnut flour",
+    "Volume": "1 cup",
+    "Ounces": "3 1/8",
+    "Gras": "89"
+  },
+  {
+    "name": "Hazelnut Praline Paste",
+    "Volume": "1/2 cup",
+    "Ounces": "5 1/2",
+    "Gras": "156"
+  },
+  {
+    "name": "Hazelnut spread",
+    "Volume": "1/2 cup",
+    "Ounces": "5 5/8",
+    "Gras": "160"
+  },
+  {
+    "name": "Hazelnuts (whole)",
+    "Volume": "1 cup",
+    "Ounces": "5",
+    "Gras": "142"
+  },
+  {
+    "name": "Hi-Maize Natural Fiber",
+    "Volume": "1/4 cup",
+    "Ounces": "1 1/8",
+    "Gras": "32"
+  },
+  {
+    "name": "High-Gluten Flour",
+    "Volume": "1 cup",
+    "Ounces": "4 1/4",
+    "Gras": "120"
+  },
+  {
+    "name": "Honey",
+    "Volume": "1/5 cup",
+    "Ounces": "3/4",
+    "Gras": "21"
+  },
+  {
+    "name": "Instant ClearJel",
+    "Volume": "1/5 cup",
+    "Ounces": "3/8",
+    "Gras": "11"
+  },
+  {
+    "name": "Irish-Style Flour",
+    "Volume": "1 cup",
+    "Ounces": "3 7/8",
+    "Gras": "110"
+  },
+  {
+    "name": "Italian-Style Flour",
+    "Volume": "1 cup",
+    "Ounces": "3 3/4",
+    "Gras": "106"
+  },
+  {
+    "name": "Jam or preserves",
+    "Volume": "1/4 cup",
+    "Ounces": "3",
+    "Gras": "85"
+  },
+  {
+    "name": "Jammy Bits",
+    "Volume": "1 cup",
+    "Ounces": "6 1/2",
+    "Gras": "184"
+  },
+  {
+    "name": "Keto Wheat Flour",
+    "Volume": "1 cup",
+    "Ounces": "4 1/4",
+    "Gras": "120"
+  },
+  {
+    "name": "Key Lime Juice",
+    "Volume": "1 cup",
+    "Ounces": "8",
+    "Gras": "227"
+  },
+  {
+    "name": "Lard",
+    "Volume": "1/2 cup",
+    "Ounces": "4",
+    "Gras": "113"
+  },
+  {
+    "name": "Leeks (diced)",
+    "Volume": "1 cup",
+    "Ounces": "3 1/4",
+    "Gras": "92"
+  },
+  {
+    "name": "Lemon Juice Powder",
+    "Volume": "2/5 cup",
+    "Ounces": "5/8",
+    "Gras": "18"
+  },
+  {
+    "name": "Lime Juice Powder",
+    "Volume": "2/5 cup",
+    "Ounces": "5/8",
+    "Gras": "18"
+  },
+  {
+    "name": "Macadamia nuts (whole)",
+    "Volume": "1 cup",
+    "Ounces": "5 1/4",
+    "Gras": "149"
+  },
+  {
+    "name": "Malt syrup",
+    "Volume": "2/5 cup",
+    "Ounces": "1 1/2",
+    "Gras": "43"
+  },
+  {
+    "name": "Malted Milk Powder",
+    "Volume": "1/4 cup",
+    "Ounces": "1 1/4",
+    "Gras": "35"
+  },
+  {
+    "name": "Malted Wheat Flakes",
+    "Volume": "1/2 cup",
+    "Ounces": "2 1/4",
+    "Gras": "64"
+  },
+  {
+    "name": "Maple sugar",
+    "Volume": "1/2 cup",
+    "Ounces": "2 3/4",
+    "Gras": "78"
+  },
+  {
+    "name": "Maple syrup",
+    "Volume": "1/2 cup",
+    "Ounces": "5 1/2",
+    "Gras": "156"
+  },
+  {
+    "name": "Marshmallow cr\u00e8me",
+    "Volume": "1 cup",
+    "Ounces": "3",
+    "Gras": "85"
+  },
+  {
+    "name": "Marshmallow Fluff\u00ae",
+    "Volume": "1 cup",
+    "Ounces": "4 1/2",
+    "Gras": "128"
+  },
+  {
+    "name": "Marshmallows (mini)",
+    "Volume": "1 cup",
+    "Ounces": "1 1/2",
+    "Gras": "43"
+  },
+  {
+    "name": "Marzipan",
+    "Volume": "1 cup",
+    "Ounces": "10 1/8",
+    "Gras": "290"
+  },
+  {
+    "name": "Mascarpone cheese",
+    "Volume": "1 cup",
+    "Ounces": "8",
+    "Gras": "227"
+  },
+  {
+    "name": "Mashed potatoes",
+    "Volume": "1 cup",
+    "Ounces": "7 1/2",
+    "Gras": "213"
+  },
+  {
+    "name": "Mayonnaise",
+    "Volume": "1/2 cup",
+    "Ounces": "4",
+    "Gras": "113"
+  },
+  {
+    "name": "Medium Rye Flour",
+    "Volume": "1 cup",
+    "Ounces": "3 3/4",
+    "Gras": "106"
+  },
+  {
+    "name": "Meringue powder",
+    "Volume": "1/4 cup",
+    "Ounces": "1 1/2",
+    "Gras": "43"
+  },
+  {
+    "name": "Milk (evaporated)",
+    "Volume": "1/2 cup",
+    "Ounces": "4",
+    "Gras": "113"
+  },
+  {
+    "name": "Milk (fresh)",
+    "Volume": "1 cup",
+    "Ounces": "8",
+    "Gras": "227"
+  },
+  {
+    "name": "Millet (whole)",
+    "Volume": "1/2 cup",
+    "Ounces": "3 5/8",
+    "Gras": "103"
+  },
+  {
+    "name": "Mini chocolate chips",
+    "Volume": "1 cup",
+    "Ounces": "6 1/4",
+    "Gras": "177"
+  },
+  {
+    "name": "Molasses",
+    "Volume": "1/4 cup",
+    "Ounces": "3",
+    "Gras": "85"
+  },
+  {
+    "name": "Mushrooms (sliced)",
+    "Volume": "1 cup",
+    "Ounces": "2 3/4",
+    "Gras": "78"
+  },
+  {
+    "name": "Non-Diastatic Malt Powder",
+    "Volume": "2/5 cup",
+    "Ounces": "5/8",
+    "Gras": "18"
+  },
+  {
+    "name": "Oat bran",
+    "Volume": "1/2 cup",
+    "Ounces": "1 7/8",
+    "Gras": "53"
+  },
+  {
+    "name": "Oat flour",
+    "Volume": "1 cup",
+    "Ounces": "3 1/4",
+    "Gras": "92"
+  },
+  {
+    "name": "Oats (old-fashioned or quick-cooking)",
+    "Volume": "1 cup",
+    "Ounces": "3 1/8",
+    "Gras": "89"
+  },
+  {
+    "name": "Olive oil",
+    "Volume": "1/4 cup",
+    "Ounces": "1 3/4",
+    "Gras": "50"
+  },
+  {
+    "name": "Olives (sliced)",
+    "Volume": "1 cup",
+    "Ounces": "5",
+    "Gras": "142"
+  },
+  {
+    "name": "Onions (fresh, diced)",
+    "Volume": "1 cup",
+    "Ounces": "5",
+    "Gras": "142"
+  },
+  {
+    "name": "Paleo Baking Flour",
+    "Volume": "1 cup",
+    "Ounces": "3 5/8",
+    "Gras": "104"
+  },
+  {
+    "name": "Palm shortening",
+    "Volume": "1/4 cup",
+    "Ounces": "1 1/2",
+    "Gras": "45"
+  },
+  {
+    "name": "Pasta Flour Blend",
+    "Volume": "1 cup",
+    "Ounces": "5 1/8",
+    "Gras": "145"
+  },
+  {
+    "name": "Pastry Flour",
+    "Volume": "1 cup",
+    "Ounces": "3 3/4",
+    "Gras": "106"
+  },
+  {
+    "name": "Pastry Flour Blend",
+    "Volume": "1 cup",
+    "Ounces": "4",
+    "Gras": "113"
+  },
+  {
+    "name": "Peaches (peeled and diced)",
+    "Volume": "1 cup",
+    "Ounces": "6",
+    "Gras": "170"
+  },
+  {
+    "name": "Peanut butter",
+    "Volume": "1/2 cup",
+    "Ounces": "4 3/4",
+    "Gras": "135"
+  },
+  {
+    "name": "Peanuts (whole, shelled)",
+    "Volume": "1 cup",
+    "Ounces": "5",
+    "Gras": "142"
+  },
+  {
+    "name": "Pears (peeled and diced)",
+    "Volume": "1 cup",
+    "Ounces": "5 3/4",
+    "Gras": "163"
+  },
+  {
+    "name": "Pecan Meal",
+    "Volume": "1 cup",
+    "Ounces": "2 3/4",
+    "Gras": "80"
+  },
+  {
+    "name": "Pecans (diced)",
+    "Volume": "1/2 cup",
+    "Ounces": "2",
+    "Gras": "57"
+  },
+  {
+    "name": "Pie Filling Enhancer",
+    "Volume": "1/4 cup",
+    "Ounces": "1 5/8",
+    "Gras": "46"
+  },
+  {
+    "name": "Pine nuts",
+    "Volume": "1/2 cup",
+    "Ounces": "2 1/2",
+    "Gras": "71"
+  },
+  {
+    "name": "Pineapple (dried)",
+    "Volume": "1/2 cup",
+    "Ounces": "2 1/2",
+    "Gras": "71"
+  },
+  {
+    "name": "Pineapple (fresh or canned, diced)",
+    "Volume": "1 cup",
+    "Ounces": "6",
+    "Gras": "170"
+  },
+  {
+    "name": "Pistachio nuts (shelled)",
+    "Volume": "1/2 cup",
+    "Ounces": "2 1/8",
+    "Gras": "60"
+  },
+  {
+    "name": "Pistachio Paste",
+    "Volume": "1/4 cup",
+    "Ounces": "2 3/4",
+    "Gras": "78"
+  },
+  {
+    "name": "Pizza Dough Flavor",
+    "Volume": "2/5 cup",
+    "Ounces": "\u00a0",
+    "Gras": "12"
+  },
+  {
+    "name": "Pizza Flour Blend",
+    "Volume": "1 cup",
+    "Ounces": "4 3/8",
+    "Gras": "124"
+  },
+  {
+    "name": "Polenta (coarse ground cornmeal)",
+    "Volume": "1 cup",
+    "Ounces": "5 3/4",
+    "Gras": "163"
+  },
+  {
+    "name": "Poppy seeds",
+    "Volume": "2/5 cup",
+    "Ounces": "5/8",
+    "Gras": "18"
+  },
+  {
+    "name": "Potato Flour",
+    "Volume": "1/4 cup",
+    "Ounces": "1 5/8",
+    "Gras": "46"
+  },
+  {
+    "name": "Potato starch",
+    "Volume": "1 cup",
+    "Ounces": "5 3/8",
+    "Gras": "152"
+  },
+  {
+    "name": "Pumpernickel Flour",
+    "Volume": "1 cup",
+    "Ounces": "3 3/4",
+    "Gras": "106"
+  },
+  {
+    "name": "Pumpkin pur\u00e9e\u00a0",
+    "Volume": "1 cup",
+    "Ounces": "8",
+    "Gras": "227"
+  },
+  {
+    "name": "Quinoa (cooked)",
+    "Volume": "1 cup",
+    "Ounces": "6 1/2",
+    "Gras": "184"
+  },
+  {
+    "name": "Quinoa (whole)",
+    "Volume": "1 cup",
+    "Ounces": "6 1/4",
+    "Gras": "177"
+  },
+  {
+    "name": "Quinoa flour",
+    "Volume": "1 cup",
+    "Ounces": "3 7/8",
+    "Gras": "110"
+  },
+  {
+    "name": "Raisins (loose)",
+    "Volume": "1 cup",
+    "Ounces": "5 1/4",
+    "Gras": "149"
+  },
+  {
+    "name": "Raisins (packed)",
+    "Volume": "1/2 cup",
+    "Ounces": "3",
+    "Gras": "85"
+  },
+  {
+    "name": "Raspberries (fresh)",
+    "Volume": "1 cup",
+    "Ounces": "4 1/4",
+    "Gras": "120"
+  },
+  {
+    "name": "Rhubarb (sliced, 1/2\" slices)",
+    "Volume": "1 cup",
+    "Ounces": "4 1/4",
+    "Gras": "120"
+  },
+  {
+    "name": "Rice (long grain, dry)",
+    "Volume": "1/2 cup",
+    "Ounces": "3 1/2",
+    "Gras": "99"
+  },
+  {
+    "name": "Rice flour (white)",
+    "Volume": "1 cup",
+    "Ounces": "5",
+    "Gras": "142"
+  },
+  {
+    "name": "Rice Krispies",
+    "Volume": "1 cup",
+    "Ounces": "1",
+    "Gras": "28"
+  },
+  {
+    "name": "Rye Bread Improver",
+    "Volume": "6/5 cup",
+    "Ounces": "\u00a0",
+    "Gras": "14"
+  },
+  {
+    "name": "Rye Chops",
+    "Volume": "1 cup",
+    "Ounces": "4 1/4",
+    "Gras": "120"
+  },
+  {
+    "name": "Rye flakes",
+    "Volume": "1 cup",
+    "Ounces": "4 3/8",
+    "Gras": "124"
+  },
+  {
+    "name": "Rye Flour Blend",
+    "Volume": "1 cup",
+    "Ounces": "3 3/4",
+    "Gras": "106"
+  },
+  {
+    "name": "Salt (Kosher, Diamond Crystal)",
+    "Volume": "3/5 cup",
+    "Ounces": "\u00a0",
+    "Gras": "8"
+  },
+  {
+    "name": "Salt (Kosher, Morton's)",
+    "Volume": "3/5 cup",
+    "Ounces": "\u00a0",
+    "Gras": "16"
+  },
+  {
+    "name": "Salt (table)",
+    "Volume": "3/5 cup",
+    "Ounces": "\u00a0",
+    "Gras": "18"
+  },
+  {
+    "name": "Scallions (sliced)",
+    "Volume": "1 cup",
+    "Ounces": "2 1/4",
+    "Gras": "64"
+  },
+  {
+    "name": "Self-Rising Flour",
+    "Volume": "1 cup",
+    "Ounces": "4",
+    "Gras": "113"
+  },
+  {
+    "name": "Semolina Flour",
+    "Volume": "1 cup",
+    "Ounces": "5 3/4",
+    "Gras": "163"
+  },
+  {
+    "name": "Sesame seeds",
+    "Volume": "1/2 cup",
+    "Ounces": "2 1/2",
+    "Gras": "71"
+  },
+  {
+    "name": "Shallots (peeled and sliced)",
+    "Volume": "1 cup",
+    "Ounces": "5 1/2",
+    "Gras": "156"
+  },
+  {
+    "name": "Six-Grain Blend",
+    "Volume": "1 cup",
+    "Ounces": "4 1/2",
+    "Gras": "128"
+  },
+  {
+    "name": "Sorghum flour",
+    "Volume": "1 cup",
+    "Ounces": "4 7/8",
+    "Gras": "138"
+  },
+  {
+    "name": "Sour cream",
+    "Volume": "1 cup",
+    "Ounces": "8",
+    "Gras": "227"
+  },
+  {
+    "name": "Sourdough starter",
+    "Volume": "1 cup",
+    "Ounces": "8 to 8 1/2",
+    "Gras": "235"
+  },
+  {
+    "name": "Soy flour",
+    "Volume": "1/4 cup",
+    "Ounces": "1 1/4",
+    "Gras": "35"
+  },
+  {
+    "name": "Sparkling Sugar",
+    "Volume": "1/4 cup",
+    "Ounces": "2",
+    "Gras": "57"
+  },
+  {
+    "name": "Spelt Flour",
+    "Volume": "1 cup",
+    "Ounces": "3 1/2",
+    "Gras": "99"
+  },
+  {
+    "name": "Sprouted Wheat Flour",
+    "Volume": "1 cup",
+    "Ounces": "4",
+    "Gras": "113"
+  },
+  {
+    "name": "Steel cut oats",
+    "Volume": "1/2 cup",
+    "Ounces": "2 1/2",
+    "Gras": "70"
+  },
+  {
+    "name": "Sticky Bun Sugar",
+    "Volume": "1 cup",
+    "Ounces": "3 1/2",
+    "Gras": "99"
+  },
+  {
+    "name": "Strawberries (fresh sliced)",
+    "Volume": "1 cup",
+    "Ounces": "5 7/8",
+    "Gras": "167"
+  },
+  {
+    "name": "Sugar (granulated white)",
+    "Volume": "1 cup",
+    "Ounces": "7",
+    "Gras": "198"
+  },
+  {
+    "name": "Sugar substitute (Splenda)",
+    "Volume": "1 cup",
+    "Ounces": "7/8",
+    "Gras": "25"
+  },
+  {
+    "name": "Sundried tomatoes (dry pack)",
+    "Volume": "1 cup",
+    "Ounces": "6",
+    "Gras": "170"
+  },
+  {
+    "name": "Sunflower seeds",
+    "Volume": "1/4 cup",
+    "Ounces": "1 1/4",
+    "Gras": "35"
+  },
+  {
+    "name": "Super 10 Blend",
+    "Volume": "1 cup",
+    "Ounces": "3 3/4",
+    "Gras": "106"
+  },
+  {
+    "name": "Sweetened condensed milk",
+    "Volume": "1/4 cup",
+    "Ounces": "2 3/4",
+    "Gras": "78"
+  },
+  {
+    "name": "Tahini paste",
+    "Volume": "1/2 cup",
+    "Ounces": "4 1/2",
+    "Gras": "128"
+  },
+  {
+    "name": "Tapioca starch or flour",
+    "Volume": "1 cup",
+    "Ounces": "4",
+    "Gras": "113"
+  },
+  {
+    "name": "Tapioca (quick cooking)",
+    "Volume": "6/5 cup",
+    "Ounces": "3/4",
+    "Gras": "21"
+  },
+  {
+    "name": "Teff flour",
+    "Volume": "1 cup",
+    "Ounces": "4 3/4",
+    "Gras": "135"
+  },
+  {
+    "name": "The Works Bread Topping",
+    "Volume": "1/4 cup",
+    "Ounces": "1 1/4",
+    "Gras": "35"
+  },
+  {
+    "name": "Toasted Almond Flour",
+    "Volume": "1 cup",
+    "Ounces": "3 3/8",
+    "Gras": "96"
+  },
+  {
+    "name": "Toffee chunks",
+    "Volume": "1 cup",
+    "Ounces": "5 1/2",
+    "Gras": "156"
+  },
+  {
+    "name": "Tropical Fruit Blend",
+    "Volume": "1 cup",
+    "Ounces": "4 1/2 to 5",
+    "Gras": "135"
+  },
+  {
+    "name": "Turbinado sugar (raw)",
+    "Volume": "1 cup",
+    "Ounces": "6 3/8",
+    "Gras": "180"
+  },
+  {
+    "name": "Unbleached Cake Flour",
+    "Volume": "1 cup",
+    "Ounces": "4 1/4",
+    "Gras": "120"
+  },
+  {
+    "name": "Vanilla Extract ",
+    "Volume": "3/5 cup",
+    "Ounces": "1/2",
+    "Gras": "14"
+  },
+  {
+    "name": "Vegetable oil",
+    "Volume": "1 cup",
+    "Ounces": "7",
+    "Gras": "198"
+  },
+  {
+    "name": "Vegetable shortening",
+    "Volume": "1/4 cup",
+    "Ounces": "1 5/8",
+    "Gras": "46"
+  },
+  {
+    "name": "Vermont Cheese Powder",
+    "Volume": "1/2 cup",
+    "Ounces": "2",
+    "Gras": "57"
+  },
+  {
+    "name": "Vital Wheat Gluten",
+    "Volume": "6/5 cup",
+    "Ounces": "5/8",
+    "Gras": "18"
+  },
+  {
+    "name": "Walnuts (chopped)",
+    "Volume": "1 cup",
+    "Ounces": "4",
+    "Gras": "113"
+  },
+  {
+    "name": "Walnuts (whole)",
+    "Volume": "1/2 cup",
+    "Ounces": "2 1/4",
+    "Gras": "64"
+  },
+  {
+    "name": "Water",
+    "Volume": "1 cup",
+    "Ounces": "8",
+    "Gras": "227"
+  },
+  {
+    "name": "Wheat berries (red)",
+    "Volume": "1 cup",
+    "Ounces": "6 1/2",
+    "Gras": "184"
+  },
+  {
+    "name": "Wheat bran",
+    "Volume": "1/2 cup",
+    "Ounces": "1 1/8",
+    "Gras": "32"
+  },
+  {
+    "name": "Wheat germ",
+    "Volume": "1/4 cup",
+    "Ounces": "1",
+    "Gras": "28"
+  },
+  {
+    "name": "White Chocolate Chips",
+    "Volume": "1 cup",
+    "Ounces": "6",
+    "Gras": "170"
+  },
+  {
+    "name": "White Rye Flour",
+    "Volume": "1 cup",
+    "Ounces": "3 3/4",
+    "Gras": "106"
+  },
+  {
+    "name": "White Whole Wheat Flour",
+    "Volume": "1 cup",
+    "Ounces": "4",
+    "Gras": "113"
+  },
+  {
+    "name": "Whole Grain Flour Blend",
+    "Volume": "1 cup",
+    "Ounces": "4",
+    "Gras": "113"
+  },
+  {
+    "name": "Whole Wheat Flour (Premium 100%)",
+    "Volume": "1 cup",
+    "Ounces": "4",
+    "Gras": "113"
+  },
+  {
+    "name": "Whole Wheat Pastry Flour / Graham Flour",
+    "Volume": "1 cup",
+    "Ounces": "3 3/8",
+    "Gras": "96"
+  },
+  {
+    "name": "Yeast (instant)",
+    "Volume": "2/5 cup",
+    "Ounces": "1/4",
+    "Gras": "7"
+  },
+  {
+    "name": "Yogurt",
+    "Volume": "1 cup",
+    "Ounces": "8",
+    "Gras": "227"
+  },
+  {
+    "name": "Zucchini (shredded)",
+    "Volume": "1 cup",
+    "Ounces": "4 1/4 to 5 1/4",
+    "Gras": "135"
+  }
+]
