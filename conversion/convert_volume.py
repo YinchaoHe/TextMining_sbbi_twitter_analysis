@@ -30,7 +30,7 @@ def fraction2decimal(frac_str):
             qty = 0
     return qty
 
-def preprocess():
+def first_step():
     with open('conversion/recipe_ingredients_df.pkl', 'rb') as f:
         recipes = pickle.load(f, encoding="latin1")
     f.close()
@@ -144,7 +144,7 @@ def preprocess():
         json.dump(data, f)
     f.close()
 
-def convert2weight():
+def second_step():
     f_recipes = []
     with open('conversion/ingr_major_units.json', 'r') as f:
         raw_recipes = json.load(f)
@@ -194,11 +194,38 @@ def convert2weight():
     f.close()
     print(amount)
 
-def mode_median_solution():
-    with open('conversion/ingr_major_unit2weight.json', 'r') as f:
+def third_step():
+    mode_median_replace_solution(path='third_step', corect_file='second_step/ingr_major_unit2weight.json', weird_file='first_step/ingr_meta_with_weird_units.json')
+
+def rename_missmapping(path, weird_file, correct_file):
+    with open('conversion/' + weird_file, 'r') as f:
+        missmapping = json.load(f)
+    f.close()
+
+    with open('conversion/' + correct_file, 'r') as f:
+        ref_metas = json.load(f)
+    f.close()
+
+    for meta in missmapping['data']:
+        m_score = 0
+        m_ingr = {}
+        for ref_meta in ref_metas['data']:
+            score = fuzz.token_set_ratio(meta[1], ref_meta[1])
+            if m_score < score:
+                m_score = score
+                m_ingr = ref_meta
+        if m_score > 60:
+            meta[1] = m_ingr[1]
+
+    with open('conversion/' + path + '/' + ''rename_missmapped_weird_meta.json'', 'w') as f:
+        json.dump(missmapping, f)
+    f.close()
+
+def mode_median_replace_solution(path, corect_file, weird_file):
+    with open('conversion/' + corect_file, 'r') as f:
         data = json.load(f)
     f.close()
-    with open('conversion/ingr_meta_with_weird_units.json', 'r') as f:
+    with open('conversion/' + weird_file, 'r') as f:
         weird_metas = json.load(f)
     f.close()
     print(len(data['data']))
@@ -224,55 +251,178 @@ def mode_median_solution():
             data['data'].append(corre_meta)
     print(len(data['data']))
     print(len(error_ingr))
-    with open('conversion/missmapped_weird_meta.json', 'w') as f:
+
+    with open('conversion/' + path + '/missmapped_meta.json', 'w') as f:
         errors = {}
         errors['data'] = error_ingr
         json.dump(errors, f)
     f.close()
-    with open('conversion/corrected_meta.json', 'w') as f:
+    with open('conversion/' + path + '/new_corrected_meta.json', 'w') as f:
         json.dump(data, f)
     f.close()
 
-def get_missmapping():
-    with open('conversion/missmapped_weird_meta.json', 'r') as f:
-        missmapping = json.load(f)
-    f.close()
+def forth_step():
+    rename_missmapping(path='forth_step', weird_file='third_step/missmapped_meta.json', correct_file='third_step/new_corrected_meta.json')
+    mode_median_replace_solution(path='forth_step', weird_file='forth_step/rename_missmapped_weird_meta.json', corect_file='third_step/new_corrected_meta.json')
 
-    with open('conversion/corrected_meta.json', 'r') as f:
-        ref_metas = json.load(f)
-    f.close()
-
-    for meta in missmapping['data']:
-        m_score = 0
-        m_ingr = {}
-        for ref_meta in ref_metas['data']:
-            score = fuzz.token_set_ratio(meta[1], ref_meta[1])
-            if m_score < score:
-                m_score = score
-                m_ingr = ref_meta
-        if m_score > 60:
-            meta[1] = m_ingr[1]
-
-    with open('conversion/corrected_missmapped_weird_meta.json', 'w') as f:
-        json.dump(missmapping, f)
-    f.close()
-
-
-
-def main():
-    with open('all_weight_cup.json', 'r') as f:
+def extract_cup_ingr(file):
+    with open('conversion/'+file, 'r') as f:
         data = json.load(f)
     f.close()
 
-    amount = 0
+    cup_ingrs = []
     for ingr in data['data']:
-        print(ingr)
-        amount += 1
-        if amount == 100:
-            exit()
-    #print(len(data['data']))
+        if ingr[3] == 'cup':
+            cup_ingrs.append(ingr)
+
+    print(len(cup_ingrs))
+    with open('conversion/cup_' + file.split('/')[-1], 'w') as f:
+        cup_dic = {}
+        cup_dic['data'] = cup_ingrs
+        json.dump(cup_dic, f)
+    f.close()
+
+def rename_ingr_with_cup():
+    with open('conversion/cup_second_corrected_meta.json', 'r') as f:
+        data = json.load(f)
+    f.close()
+    cup_ingrs = data['data']
+    df = pd.DataFrame(data['data'], columns=['recipe_id', 'ing_name', 'qty', 'unit'])
+
+    with open('conversion/cup_ingr_name_pairs.json', 'r') as f:
+        mached_pairs = json.load(f)
+    f.close()
+    error_ingr = []
+
+    for ingr_meta in cup_ingrs:
+        if ingr_meta[3] == 'cup':
+            if ingr_meta[1] in mached_pairs.keys():
+                ingr_name = ingr_meta[1]
+                ingr_meta[1] = mached_pairs[ingr_name]
+                print(ingr_meta)
+
+    with open('conversion/rename_cup_second_corrected_meta.json', 'w') as f:
+        data = {}
+        data['data'] = cup_ingrs
+        json.dump(data, f)
+    f.close()
+
+def volume2weight_by_chart():
+    f_recipes = []
+    with open('conversion/replaced_cup_second_corrected_meta.json', 'r') as f:
+        raw_recipes = json.load(f)
+    f.close()
+
+    with open('conversion/first_step/ingr_conv_chart.json', 'r') as f:
+        convert_table = json.load(f)
+    f.close()
+
+    amount = 0
+    for recipe in raw_recipes['data']:
+        print(recipe)
+        ingr_name = recipe[1]
+        qty = float(recipe[2])
+        if recipe[1] == '':
+            del recipe
+            continue
+        if recipe[-1] == 'cup':
+            print(ingr_name)
+            m_score = 0
+            m_ingr = {}
+            for item_dic in convert_table:
+                score = fuzz.token_set_ratio(ingr_name, item_dic['name'])
+                if m_score < score:
+                    m_score = score
+                    m_ingr = item_dic
+            if m_score > 45:
+                print(m_ingr)
+                if 'cup' in m_ingr['Volume']:
+                    m_volu_info = m_ingr['Volume'].split(" ")
+                    m_volu = m_volu_info[0]
+                    m_qty = float(m_ingr['Gras'])
+                    t_m_volu = fraction2decimal(m_volu)
+                    t_m_qty = m_qty / t_m_volu
+                    f_m_qty = t_m_qty * qty
+                    recipe[2] = str(f_m_qty)
+                    recipe[3] = 'gram'
+                amount += 1
+                f_recipes.append(recipe)
+            else:
+                f_recipes.append(recipe)
+        else:
+            f_recipes.append(recipe)
+
+    with open('conversion/rename_cup_second_correct_2weight.json', 'w') as f:
+        data = {}
+        data['data'] = f_recipes
+        json.dump(data, f)
+    f.close()
+    print(amount)
+
+def final_merge_cup_nocup():
+    with open('conversion/rename_cup_second_correct_2weight.json', 'r') as f:
+        data = json.load(f)
+    f.close()
+    cup_ingr = data['data']
+
+    with open('conversion/no_cup_second_corrected_meta.json', 'r') as f:
+        data = json.load(f)
+    f.close()
+    no_cup_ingr = data['data']
+
+    ingrs = no_cup_ingr + cup_ingr
+    print(len(no_cup_ingr))
+    print(len(cup_ingr))
+    print(len(ingrs))
+
+    with open("conversion/merged_nocup_cup_corrected_meta.json", "w") as f:
+        data = {}
+        data['data'] = ingrs
+        json.dump(data,f)
+    f.close()
+
+def rename_missing_ingre():
+    with open("conversion/forth_step/missmapped_replaced_missmapped_weird_meta.json", 'r') as f:
+        data = json.load(f)
+    f.close()
+    cup_ingrs = data['data']
+
+    with open("conversion/ingr_clusters.json", 'r') as f:
+        ingr_clusters = json.load(f)
+    f.close()
+
+    for cup_ingr in cup_ingrs:
+        print(cup_ingr)
+        m_score = 0
+        m_ingr = 'searching'
+        for ingr_cluster in ingr_clusters:
+            for ingr in ingr_clusters[ingr_cluster]:
+                score = fuzz.token_set_ratio(cup_ingr[1], ingr)
+                if m_score < score:
+                    m_score = score
+                    m_ingr = ingr
+        if m_score > 60:
+            cup_ingr[1] = m_ingr
+
+    with open("conversion/rename_forth_step_missing_cup_ingr.json", 'w') as f:
+        data = {}
+        data['data'] = cup_ingrs
+        json.dump(data, f)
+    f.close()
+
+def fifth_step():
+    extract_cup_ingr()
+    rename_ingr_with_cup()
+    volume2weight_by_chart()
+    final_merge_cup_nocup()
+    rename_missing_ingre()
+    mode_median_replace_solution("merged_nocup_cup_corrected_meta.json", 'rename_forth_step_missing_cup_ingr.json')
+
+
+def main():
+    third_step()
+    forth_step()
+
+
 if __name__ == '__main__':
-    #preprocess()
-    #main()
-    #avarage_solution()
-    get_missmapping()
+    main()
