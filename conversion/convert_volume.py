@@ -217,7 +217,7 @@ def rename_missmapping(path, weird_file, correct_file):
         if m_score > 60:
             meta[1] = m_ingr[1]
 
-    with open('conversion/' + path + '/' + ''rename_missmapped_weird_meta.json'', 'w') as f:
+    with open('conversion/' + path + '/' + 'rename_missmapped_weird_meta.json', 'w') as f:
         json.dump(missmapping, f)
     f.close()
 
