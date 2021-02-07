@@ -197,7 +197,7 @@ def second_step():
 def third_step():
     mode_median_replace_solution(path='third_step', corect_file='second_step/ingr_major_unit2weight.json', weird_file='first_step/ingr_meta_with_weird_units.json')
 
-def rename_missmapping(path, weird_file, correct_file):
+def rename_missmapping_by_corrected(path, weird_file, correct_file):
     with open('conversion/' + weird_file, 'r') as f:
         missmapping = json.load(f)
     f.close()
@@ -252,7 +252,7 @@ def mode_median_replace_solution(path, corect_file, weird_file):
     print(len(data['data']))
     print(len(error_ingr))
 
-    with open('conversion/' + path + '/missmapped_meta.json', 'w') as f:
+    with open('conversion/' + path + '/new_missmapped_meta.json', 'w') as f:
         errors = {}
         errors['data'] = error_ingr
         json.dump(errors, f)
@@ -262,37 +262,48 @@ def mode_median_replace_solution(path, corect_file, weird_file):
     f.close()
 
 def forth_step():
-    rename_missmapping(path='forth_step', weird_file='third_step/missmapped_meta.json', correct_file='third_step/new_corrected_meta.json')
+    rename_missmapping_by_corrected(path='forth_step', weird_file='third_step/missmapped_meta.json', correct_file='third_step/new_corrected_meta.json')
     mode_median_replace_solution(path='forth_step', weird_file='forth_step/rename_missmapped_weird_meta.json', corect_file='third_step/new_corrected_meta.json')
 
-def extract_cup_ingr(file):
+def split2cupornocup(file, function, path):
     with open('conversion/'+file, 'r') as f:
         data = json.load(f)
     f.close()
 
-    cup_ingrs = []
-    for ingr in data['data']:
-        if ingr[3] == 'cup':
-            cup_ingrs.append(ingr)
+    ingrs = []
+    if function == 'cup':
+        for ingr in data['data']:
+            if ingr[3] == 'cup':
+                ingrs.append(ingr)
 
-    print(len(cup_ingrs))
-    with open('conversion/cup_' + file.split('/')[-1], 'w') as f:
-        cup_dic = {}
-        cup_dic['data'] = cup_ingrs
-        json.dump(cup_dic, f)
-    f.close()
+        print(len(ingrs))
+        with open('conversion/' + path + '/cup_ingr.json', 'w') as f:
+            dic = {}
+            dic['data'] = ingrs
+            json.dump(dic, f)
+        f.close()
 
-def rename_ingr_with_cup():
-    with open('conversion/cup_second_corrected_meta.json', 'r') as f:
+    else:
+        for ingr in data['data']:
+            if ingr[3] != 'cup':
+                ingrs.append(ingr)
+        print(len(ingrs))
+        with open('conversion/' + path + '/nocup_ingr.json', 'w') as f:
+            dic = {}
+            dic['data'] = ingrs
+            json.dump(dic, f)
+        f.close()
+
+
+def rename_cup_ingr_by_pairs(file, path):
+    with open('conversion/' + file, 'r') as f:
         data = json.load(f)
     f.close()
     cup_ingrs = data['data']
-    df = pd.DataFrame(data['data'], columns=['recipe_id', 'ing_name', 'qty', 'unit'])
 
     with open('conversion/cup_ingr_name_pairs.json', 'r') as f:
         mached_pairs = json.load(f)
     f.close()
-    error_ingr = []
 
     for ingr_meta in cup_ingrs:
         if ingr_meta[3] == 'cup':
@@ -301,15 +312,15 @@ def rename_ingr_with_cup():
                 ingr_meta[1] = mached_pairs[ingr_name]
                 print(ingr_meta)
 
-    with open('conversion/rename_cup_second_corrected_meta.json', 'w') as f:
+    with open('conversion/' + path + '/rename_cup_ingr_by_pairs.json', 'w') as f:
         data = {}
         data['data'] = cup_ingrs
         json.dump(data, f)
     f.close()
 
-def volume2weight_by_chart():
+def volume2weight_by_chart(file, path):
     f_recipes = []
-    with open('conversion/replaced_cup_second_corrected_meta.json', 'r') as f:
+    with open('conversion/' + file, 'r') as f:
         raw_recipes = json.load(f)
     f.close()
 
@@ -352,20 +363,20 @@ def volume2weight_by_chart():
         else:
             f_recipes.append(recipe)
 
-    with open('conversion/rename_cup_second_correct_2weight.json', 'w') as f:
+    with open('conversion/' + path + '/rename_cup_2weight.json', 'w') as f:
         data = {}
         data['data'] = f_recipes
         json.dump(data, f)
     f.close()
     print(amount)
 
-def final_merge_cup_nocup():
-    with open('conversion/rename_cup_second_correct_2weight.json', 'r') as f:
+def merge_cup_nocup(weighted_cupfile, nocupfile, path):
+    with open('conversion/' + weighted_cupfile, 'r') as f:
         data = json.load(f)
     f.close()
     cup_ingr = data['data']
 
-    with open('conversion/no_cup_second_corrected_meta.json', 'r') as f:
+    with open('conversion/' + nocupfile, 'r') as f:
         data = json.load(f)
     f.close()
     no_cup_ingr = data['data']
@@ -375,48 +386,21 @@ def final_merge_cup_nocup():
     print(len(cup_ingr))
     print(len(ingrs))
 
-    with open("conversion/merged_nocup_cup_corrected_meta.json", "w") as f:
+    with open("conversion/" + path + "/merged_nocup_weightedcup.json", "w") as f:
         data = {}
         data['data'] = ingrs
         json.dump(data,f)
     f.close()
 
-def rename_missing_ingre():
-    with open("conversion/forth_step/missmapped_replaced_missmapped_weird_meta.json", 'r') as f:
-        data = json.load(f)
-    f.close()
-    cup_ingrs = data['data']
-
-    with open("conversion/ingr_clusters.json", 'r') as f:
-        ingr_clusters = json.load(f)
-    f.close()
-
-    for cup_ingr in cup_ingrs:
-        print(cup_ingr)
-        m_score = 0
-        m_ingr = 'searching'
-        for ingr_cluster in ingr_clusters:
-            for ingr in ingr_clusters[ingr_cluster]:
-                score = fuzz.token_set_ratio(cup_ingr[1], ingr)
-                if m_score < score:
-                    m_score = score
-                    m_ingr = ingr
-        if m_score > 60:
-            cup_ingr[1] = m_ingr
-
-    with open("conversion/rename_forth_step_missing_cup_ingr.json", 'w') as f:
-        data = {}
-        data['data'] = cup_ingrs
-        json.dump(data, f)
-    f.close()
 
 def fifth_step():
-    extract_cup_ingr()
-    rename_ingr_with_cup()
-    volume2weight_by_chart()
-    final_merge_cup_nocup()
-    rename_missing_ingre()
-    mode_median_replace_solution("merged_nocup_cup_corrected_meta.json", 'rename_forth_step_missing_cup_ingr.json')
+    split2cupornocup(file='forth_step/new_corrected_meta.json', path='fifth_step', function='cup')
+    split2cupornocup(file='forth_step/new_corrected_meta.json', path='fifth_step', function='nocup')
+    rename_cup_ingr_by_pairs(file='fifth_step/cup_ingr.json', path='fifth_cup')
+    volume2weight_by_chart(file='fifth_step/rename_cup_ingr_by_pairs.json', path='fifth_cup')
+    merge_cup_nocup(weighted_cupfile='fifth_step/rename_cup_2weight.json', nocupfile='fifth_step/nocup_ingr.json', path='fifth_step')
+    rename_missmapping_by_corrected(path='fifth_step', weird_file= 'forth_step/new_missmapped_meta.json', correct_file='fifth_step/merged_nocup_weightedcup.json' )
+    mode_median_replace_solution(path='fifth_step', corect_file = 'fifth_step/merged_nocup_weightedcup.json', weird_file='fifth_stop/rename_missmapped_weird_meta.json')
 
 
 def main():
