@@ -396,16 +396,16 @@ def merge_cup_nocup(weighted_cupfile, nocupfile, path):
 def fifth_step():
     split2cupornocup(file='forth_step/new_corrected_meta.json', path='fifth_step', function='cup')
     split2cupornocup(file='forth_step/new_corrected_meta.json', path='fifth_step', function='nocup')
-    rename_cup_ingr_by_pairs(file='fifth_step/cup_ingr.json', path='fifth_cup')
-    volume2weight_by_chart(file='fifth_step/rename_cup_ingr_by_pairs.json', path='fifth_cup')
+    rename_cup_ingr_by_pairs(file='fifth_step/cup_ingr.json', path='fifth_step')
+    volume2weight_by_chart(file='fifth_step/rename_cup_ingr_by_pairs.json', path='fifth_step')
     merge_cup_nocup(weighted_cupfile='fifth_step/rename_cup_2weight.json', nocupfile='fifth_step/nocup_ingr.json', path='fifth_step')
     rename_missmapping_by_corrected(path='fifth_step', weird_file= 'forth_step/new_missmapped_meta.json', correct_file='fifth_step/merged_nocup_weightedcup.json' )
-    mode_median_replace_solution(path='fifth_step', corect_file = 'fifth_step/merged_nocup_weightedcup.json', weird_file='fifth_stop/rename_missmapped_weird_meta.json')
+    mode_median_replace_solution(path='fifth_step', corect_file = 'fifth_step/merged_nocup_weightedcup.json', weird_file='fifth_step/rename_missmapped_weird_meta.json')
 
 
 def main():
-    third_step()
-    forth_step()
+    fifth_step()
+    
 
 
 if __name__ == '__main__':
