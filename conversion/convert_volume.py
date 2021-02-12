@@ -1,13 +1,9 @@
 import json
 import pickle
 import statistics
-
-import Levenshtein as Levenshtein
 import pandas as pd
 from fuzzywuzzy import process, fuzz
-import time
-from difflib import SequenceMatcher
-from fractions import Fraction
+
 
 def fraction2decimal(frac_str):
     qtys = frac_str.split('/')
