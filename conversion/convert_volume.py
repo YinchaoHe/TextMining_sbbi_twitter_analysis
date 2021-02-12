@@ -234,8 +234,7 @@ def mode_median_replace_solution(path, corect_file, weird_file):
         for weird_meta in weird_metas[weird_unit]:
             if 'rename' in weird_file:
                 ref = df.loc[(df['ing_name'] == weird_meta[-1]) & (df['unit'] == 'gram')]
-                print(weird_file)
-                exit()
+
             else:
                 ref = df.loc[(df['ing_name'] == weird_meta[1]) & (df['unit'] == 'gram')]
             str_qtys = list(ref['qty'])
@@ -285,6 +284,7 @@ def rename_missmapping_by_corrected(path, weird_file, correct_file):
                 m_ingr = ref_meta
         if m_score > 60:
             meta[-1] = m_ingr[1]
+            print(meta[-1])
 
     with open('conversion/' + path + '/' + 'rename_missmapped_weird_meta.json', 'w') as f:
         json.dump(missmapping, f)
