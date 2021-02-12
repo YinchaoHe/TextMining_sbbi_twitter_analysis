@@ -30,7 +30,7 @@ def fraction2decimal(frac_str):
             qty = 0
     return qty
 
-def first_step():
+def split_ingr():
     with open('conversion/recipe_ingredients_df.pkl', 'rb') as f:
         recipes = pickle.load(f, encoding="latin1")
     f.close()
@@ -144,13 +144,42 @@ def first_step():
         json.dump(data, f)
     f.close()
 
+def add_tag(file1,file2):
+    with open(file1, 'r') as f:
+        weird_units_dic = json.load(f)
+    f.close()
+
+    with open(file2, 'r') as f:
+        major_units_dic = json.load(f)
+    f.close()
+
+    weird_units = weird_units_dic['data']
+    for weird_unit in weird_units:
+        weird_unit.append('tag')
+
+    major_units = major_units_dic['data']
+    for major_unit in major_units:
+        major_unit.append('tag')
+
+    with open(file1, 'w') as f:
+        json.dump(weird_units_dic, f)
+    f.close()
+
+    with open(file2, 'w') as f:
+        json.dump(major_units_dic, f)
+    f.close()
+
+def first_step():
+    split_ingr()
+    add_tag()
+
 def second_step():
     f_recipes = []
-    with open('conversion/ingr_major_units.json', 'r') as f:
+    with open('first_step/ingr_major_units.json', 'r') as f:
         raw_recipes = json.load(f)
     f.close()
 
-    with open('conversion/ingr_conv_chart.json', 'r') as f:
+    with open('first_step/ingr_conv_chart.json', 'r') as f:
         convert_table = json.load(f)
     f.close()
 
@@ -159,7 +188,7 @@ def second_step():
         print(recipe)
         ingr_name = recipe[1]
         qty = float(recipe[2])
-        if recipe[-1] == 'cup':
+        if recipe[-2] == 'cup':
             print(ingr_name)
             m_score = 0
             m_ingr = {}
@@ -187,13 +216,57 @@ def second_step():
         else:
             f_recipes.append(recipe)
 
-    with open('conversion/ingr_major_unit2weight.json', 'w') as f:
+    with open('second_step/ingr_major_unit2weight.json', 'w') as f:
         data = {}
         data['data'] = f_recipes
         json.dump(data, f)
     f.close()
     print(amount)
 
+def mode_median_replace_solution(path, corect_file, weird_file):
+    with open('conversion/' + corect_file, 'r') as f:
+        data = json.load(f)
+    f.close()
+    with open('conversion/' + weird_file, 'r') as f:
+        weird_metas = json.load(f)
+    f.close()
+    print(len(data['data']))
+    df = pd.DataFrame(data['data'], columns=['recipe_id', 'ing_name', 'qty', 'unit', 'tag'])
+
+    error_ingr = []
+    for weird_unit in weird_metas.keys():
+        for weird_meta in weird_metas[weird_unit]:
+            if 'rename' in weird_file:
+                ref = df.loc[(df['ing_name'] == weird_meta[-1]) & (df['unit'] == 'gram')]
+                print(weird_file)
+                exit()
+            else:
+                ref = df.loc[(df['ing_name'] == weird_meta[1]) & (df['unit'] == 'gram')]
+            str_qtys = list(ref['qty'])
+            float_qtys = [float(i) for i in str_qtys]
+            try:
+                qty_mode = statistics.mode(float_qtys)
+            except:
+                try:
+                    qty_mode = statistics.mean(float_qtys)
+                except:
+                    error_meta = [weird_meta[0], weird_meta[1], weird_meta[2], weird_meta[3], weird_meta[4]]
+                    error_ingr.append(error_meta)
+                    continue
+            corre_meta = [weird_meta[0], weird_meta[1], str(qty_mode), 'gram', weird_meta[4]]
+            print(corre_meta)
+            data['data'].append(corre_meta)
+    print(len(data['data']))
+    print(len(error_ingr))
+
+    with open('conversion/' + path + '/new_missmapped_meta.json', 'w') as f:
+        errors = {}
+        errors['data'] = error_ingr
+        json.dump(errors, f)
+    f.close()
+    with open('conversion/' + path + '/new_corrected_meta.json', 'w') as f:
+        json.dump(data, f)
+    f.close()
 def third_step():
     mode_median_replace_solution(path='third_step', corect_file='second_step/ingr_major_unit2weight.json', weird_file='first_step/ingr_meta_with_weird_units.json')
 
@@ -215,51 +288,13 @@ def rename_missmapping_by_corrected(path, weird_file, correct_file):
                 m_score = score
                 m_ingr = ref_meta
         if m_score > 60:
-            meta[1] = m_ingr[1]
+            meta[-1] = m_ingr[1]
 
     with open('conversion/' + path + '/' + 'rename_missmapped_weird_meta.json', 'w') as f:
         json.dump(missmapping, f)
     f.close()
 
-def mode_median_replace_solution(path, corect_file, weird_file):
-    with open('conversion/' + corect_file, 'r') as f:
-        data = json.load(f)
-    f.close()
-    with open('conversion/' + weird_file, 'r') as f:
-        weird_metas = json.load(f)
-    f.close()
-    print(len(data['data']))
-    df = pd.DataFrame(data['data'], columns=['recipe_id', 'ing_name', 'qty', 'unit'])
 
-    error_ingr = []
-    for weird_unit in weird_metas.keys():
-        for weird_meta in weird_metas[weird_unit]:
-            ref = df.loc[(df['ing_name'] == weird_meta[1]) & (df['unit'] == 'gram')]
-            str_qtys = list(ref['qty'])
-            float_qtys = [float(i) for i in str_qtys]
-            try:
-                qty_mode = statistics.mode(float_qtys)
-            except:
-                try:
-                    qty_mode = statistics.mean(float_qtys)
-                except:
-                    error_meta = [weird_meta[0], weird_meta[1], weird_meta[2], weird_meta[3]]
-                    error_ingr.append(error_meta)
-                    continue
-            corre_meta = [weird_meta[0], weird_meta[1], str(qty_mode), 'gram']
-            print(corre_meta)
-            data['data'].append(corre_meta)
-    print(len(data['data']))
-    print(len(error_ingr))
-
-    with open('conversion/' + path + '/new_missmapped_meta.json', 'w') as f:
-        errors = {}
-        errors['data'] = error_ingr
-        json.dump(errors, f)
-    f.close()
-    with open('conversion/' + path + '/new_corrected_meta.json', 'w') as f:
-        json.dump(data, f)
-    f.close()
 
 def forth_step():
     rename_missmapping_by_corrected(path='forth_step', weird_file='third_step/missmapped_meta.json', correct_file='third_step/new_corrected_meta.json')
@@ -394,6 +429,7 @@ def merge_cup_nocup(weighted_cupfile, nocupfile, path):
 
 
 def fifth_step():
+
     split2cupornocup(file='forth_step/new_corrected_meta.json', path='fifth_step', function='cup')
     split2cupornocup(file='forth_step/new_corrected_meta.json', path='fifth_step', function='nocup')
     rename_cup_ingr_by_pairs(file='fifth_step/cup_ingr.json', path='fifth_step')
@@ -404,7 +440,7 @@ def fifth_step():
 
 
 def main():
-    fifth_step()
+    forth_step()
     
 
 
