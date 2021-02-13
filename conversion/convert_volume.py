@@ -340,7 +340,7 @@ def rename_cup_ingr_by_pairs(file, path):
         if ingr_meta[3] == 'cup':
             if ingr_meta[1] in mached_pairs.keys():
                 ingr_name = ingr_meta[1]
-                ingr_meta[1] = mached_pairs[ingr_name]
+                ingr_meta[-1] = mached_pairs[ingr_name]
                 print(ingr_meta)
 
     with open('conversion/' + path + '/rename_cup_ingr_by_pairs.json', 'w') as f:
@@ -362,12 +362,12 @@ def volume2weight_by_chart(file, path):
     amount = 0
     for recipe in raw_recipes['data']:
         print(recipe)
-        ingr_name = recipe[1]
+        ingr_name = recipe[-1]
         qty = float(recipe[2])
         if recipe[1] == '':
             del recipe
             continue
-        if recipe[-1] == 'cup':
+        if recipe[-2] == 'cup':
             print(ingr_name)
             m_score = 0
             m_ingr = {}
