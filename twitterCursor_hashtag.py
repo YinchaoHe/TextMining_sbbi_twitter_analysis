@@ -132,8 +132,9 @@ def main():
             Twitter_Cursor_handler(target, path)
 
 def hashtag_monitor():
-    #hashtags = '(#fatboyproblems OR #fatgirlproblems OR #obesity)'
-    with open('user_group/hashtag_users.json', 'r') as f:
+    # hashtags = '(#sports OR #sportsnews OR #football OR #soccer OR #nba OR #sport)'
+    # Twitter_Cursor_handler(hashtags, path = 'for_search', file_name='sports_users')
+    with open('for_search/sports_users.json', 'r') as f:
         tweets = json.load(f)
     f.close()
     for tweet in tweets:
