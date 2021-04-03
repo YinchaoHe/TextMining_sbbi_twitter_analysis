@@ -120,18 +120,18 @@ def main():
         os.mkdir("TwitterData_Cursor")
     except:
         pass
-    with open("checked_targets.json", "r") as file:
-        list = json.load(file)
+    with open("obesity_relevance.json", "r") as file:
+        cates = json.load(file)
     file.close()
 
-    categories = ['']
+    categories = ['obesity_positive', "obesity_negative"]
     for category in categories:
         try:
             path = "TwitterData_Cursor/" + category
             os.mkdir(path)
         except:
             pass
-        for target in list[category]:
+        for target in cates[category]:
             print(target)
             Twitter_Cursor_handler(target, path)
 
