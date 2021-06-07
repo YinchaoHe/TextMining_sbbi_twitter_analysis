@@ -1,6 +1,8 @@
 import json
 import os
 import time
+
+import pandas as pd
 from tweepy import OAuthHandler
 import tweepy
 
@@ -55,98 +57,40 @@ def Twitter_Cursor_handler(target, path, file_name):
             time.sleep(5)
         except tweepy.TweepError:
             time.sleep(60 * 2)
+            print('error')
             continue
         except StopIteration:
             break
 
-    # for tweet in tweets:
-    #     print(tweet)
-    #     tweet_dict = {}
-    #     tweet_dict["created_at"] = str(tweet.created_at)
-    #     tweet_dict["id"] = tweet.id_str
-    #     tweet_dict["text"] = tweet.text
-    #     tweet_dict["geo"] = tweet.geo
-    #     tweet_dict["coordinates"] = str(tweet.coordinates)
-    #     tweet_dict["favorite_count"] = tweet.favorite_count
-    #     tweet_dict["entities"] = tweet.entities
-    #
-    #     user_info = {}
-    #     user_info["id_str"] = tweet.user.id_str
-    #     user_info["name"] = tweet.user.name
-    #     user_info["screen_name"] = tweet.user.screen_name
-    #     user_info["location"] =  tweet.user.location
-    #     user_info["description"] = tweet.user.description
-    #     user_info["followers_count"] = tweet.user.followers_count
-    #     user_info["friends_count"] = tweet.user.friends_count
-    #     tweet_dict["user"] =user_info
-    #     processed_tweets.append(tweet_dict)
 
 
 
-# def read_target_file():
-#     file =  open("search_targets.txt", 'r')
-#     check_categories = []
-#     original_categories = []
-#
-#     for line in file.readlines():
-#         text = line.split('\n')[0]
-#         target_food = text.split()[0:1][0]
-#         category = text.split()[-1]
-#         pair_t = [target_food, category]
-#         original_categories.append(pair_t)
-#         if category not in check_categories:
-#             check_categories.append(category)
-#
-#     file.close()
-#     print(len(check_categories))
-#     print(len(original_categories))
-#     cate = {}
-#
-#     for category in check_categories:
-#         cate[category] = []
-#         for pair in original_categories:
-#             if pair[1] == category:
-#                 cate[category].append(pair[0])
-#     with open("targets.json", 'w') as file:
-#         json.dump(cate,file)
-#     file.close()
 
-def main():
-    try:
-        os.mkdir("TwitterData_Cursor")
-    except:
-        pass
-    with open("checked_targets.json", "r") as file:
-        list = json.load(file)
-    file.close()
-
-    categories = ['']
-    for category in categories:
-        try:
-            path = "TwitterData_Cursor/" + category
-            os.mkdir(path)
-        except:
-            pass
-        for target in list[category]:
-            print(target)
-            Twitter_Cursor_handler(target, path)
 
 def hashtag_monitor():
-    # hashtags = '(#sports OR #sportsnews OR #football OR #soccer OR #nba OR #sport)'
-    # Twitter_Cursor_handler(hashtags, path = 'for_search', file_name='sports_users')
-    with open('for_search/sports_users.json', 'r') as f:
-        tweets = json.load(f)
-    f.close()
-    for tweet in tweets:
-        print(tweet['user']['screen_name'])
-        user = tweet['user']['screen_name']
-        search_target = 'from:' + user
-        path = 'user_group'
-        try:
-            os.mkdir(path)
-        except:
-            pass
-        Twitter_Cursor_handler(search_target, path, user)
+    data = pd.read_csv('publichealth_v1i2e6_app1.csv', header=0)
+    data = data.fillna('MISSING')
+    path = 'medical_terms'
+    try:
+        os.mkdir(path)
+    except:
+        pass
+    for medi_term in data.columns:
+        search_target = '('
+        for k in data[medi_term]:
+            if k != 'MISSING':
+                k = str.replace(k, '-', ' ')
+                if search_target == '(':
+                    search_target = search_target + k
+                else:
+                    search_target = search_target + ' OR ' + k
+        search_target += ')'
+        print(search_target)
+
+        # #user should be the disease
+        # #search_target should be medical terms
+        # #path should be constant
+        Twitter_Cursor_handler(search_target, path, medi_term)
 
 if __name__ == '__main__':
     #main()

@@ -23,7 +23,7 @@ def Twitter_Cursor_handler(target, path):
     api = tweepy.API(auth, wait_on_rate_limit=True,
                      wait_on_rate_limit_notify=True)
 
-    text_query = target + ' -filter:retweets'
+    text_query = "pneumonia swelling" + ' -filter:retweets'
     c = tweepy.Cursor(api.search,q=text_query, lang='en').items()
 
     target = target.replace(" ", "_")
@@ -124,7 +124,7 @@ def main():
         cates = json.load(file)
     file.close()
 
-    categories = ['obesity_positive', "obesity_negative"]
+    categories = ['obesity_positive',]
     for category in categories:
         try:
             path = "TwitterData_Cursor/" + category
